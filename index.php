@@ -14,7 +14,7 @@
     <?php include('navbar.php')  ?>
     <div>
         <h1 class="text-primary text-center mt-3">Patient Registration</h1>
-        <form action='action.php' method='post' class='pr-5 pl-5 ml-5 mr-5'>
+        <form action='action.php' method='post' enctype="multipart/form-data" class='pr-5 pl-5 ml-5 mr-5'>
             <div class="row">
                 <div class="col">
                     <label for="exampleInputEmail1">Full Name</label>
@@ -34,9 +34,14 @@
                 <input type="number" class="form-control" name='phone' id="exampleInputPassword1" placeholder="Phone No.">
             </div>
             <div class="row">
-            <div class="col">
+                <div class="col">
                     <label for="exampleInputEmail1">City</label>
                     <input type="text" class="form-control" name='city' placeholder="City">
+                </div>
+                <div class="col custom-file">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <input type="file" name="image" class="custom-file-input" id="validatedCustomFile" required>
+                    
                 </div>
                 <div class="col">
                    <p><label for="exampleInputEmail1">Gender</label></p> 
