@@ -73,7 +73,7 @@
             ?>
                     <div class="d-flex patient-card ">
                         <div>
-                            <img src="img/patient.jpg" alt="">
+                            <img src="<?php echo $patient['patient_image']; ?>" alt="">
                         </div>
                         <div>
                             <h3 class='d-flex justify-content-between'><?php echo $patient['patient_name']; ?> 

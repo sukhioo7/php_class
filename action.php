@@ -3,56 +3,55 @@
 <!-- +++++++++++++++++++++++++++++ Insert Patient +++++++++++++++++++++++++++++++++++++++ -->
 <?php
 $target_folder = 'media/patient_image/';
-$target_file = $target_folder . $_FILES['image']['name'];
+
 
 // media/patient_image/hospital_imgae.jpg 
 
 
 if (isset($_POST['patient_register'])){
-    print_r($_FILES);
-    // echo $target_file;
-    $a = move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
-    echo $a;
-    // $full_name = $_POST['full_name'];
-    // $age = $_POST['age'];
-    // $city = $_POST['city'];
-    // $gender = $_POST['gender']; 
-    // $phone = $_POST['phone'];
-    // $email = $_POST['email'];
-    // $symptoms = $_POST['symptoms'];
     
-    // if (!empty($full_name) and !empty($age) and !empty($city) and !empty($gender) 
-    //         and !empty($phone) and !empty($email) and !empty($symptoms)){
+    $full_name = $_POST['full_name'];
+    $age = $_POST['age'];
+    $city = $_POST['city'];
+    $gender = $_POST['gender']; 
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $symptoms = $_POST['symptoms'];
+    $target_file = $target_folder . $_FILES['image']['name'];
     
-    //     $select_email = "select * from patient where patient_email='$email'";
-    //     $select_phone = "select * from patient where patient_phone='$phone'";
+    if (!empty($full_name) and !empty($age) and !empty($city) and !empty($gender) 
+            and !empty($phone) and !empty($email) and !empty($symptoms)){
     
-    //     $email_res = mysqli_query($connection,$select_email);
-    //     $phone_res = mysqli_query($connection,$select_phone);
-    //     if ($email_res->num_rows==0){
-    //         if ($phone_res->num_rows==0){
-    //             $insert_patient = "insert into patient (patient_name,patient_age,patient_city,
-    //                                 patient_gender,patient_phone,patient_email,patient_symtomps) 
-    //                                 values ('$full_name',$age,'$city','$gender','$phone','$email',
-    //                                 '$symptoms');";
+        $select_email = "select * from patient where patient_email='$email'";
+        $select_phone = "select * from patient where patient_phone='$phone'";
+    
+        $email_res = mysqli_query($connection,$select_email);
+        $phone_res = mysqli_query($connection,$select_phone);
+        if ($email_res->num_rows==0){
+            if ($phone_res->num_rows==0){
+                move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
+                $insert_patient = "insert into patient (patient_name,patient_age,patient_city,
+                                    patient_gender,patient_phone,patient_email,patient_symtomps,patient_image) 
+                                    values ('$full_name',$age,'$city','$gender','$phone','$email',
+                                    '$symptoms','$target_file');";
             
-    //             $response = mysqli_query($connection,$insert_patient);
-    //             if ($response){
-    //                 header('location:success.php');
-    //             }else{
-    //                 echo 'Patient Not Register';
-    //             }          
-    //         }else{
-    //             echo 'Phone number already exist';
-    //         }
-    //     }else{
-    //         echo 'Email Already Exist';
-    //     }
+                $response = mysqli_query($connection,$insert_patient);
+                if ($response){
+                    header('location:success.php');
+                }else{
+                    echo 'Patient Not Register';
+                }          
+            }else{
+                echo 'Phone number already exist';
+            }
+        }else{
+            echo 'Email Already Exist';
+        }
     
     
-    // }else{
-    //     echo 'Values are empty';
-    // }
+    }else{
+        echo 'Values are empty';
+    }
 }
 
 ?>
@@ -65,9 +64,13 @@ if (isset($_GET['del_id'])){
         header('location:login.php');
     }
     $patient_id = $_GET['del_id'];
-    
+
+    $select_query = "select patient_image from patient where patient_id=$patient_id;";
+    $raw_patient = mysqli_query($connection,$select_query);
+    $patient = mysqli_fetch_assoc($raw_patient);
+    unlink($patient['patient_image']);
+
     $delete_query = "delete from patient where patient_id=$patient_id";
-    
     $del_res = mysqli_query($connection,$delete_query);
     if ($del_res){
         header('location:patient.php');
@@ -83,7 +86,7 @@ if (isset($_GET['del_id'])){
 
 <?php 
 if (isset($_POST['patient_update'])){
-        
+    print_r($_FILES);
     $id = $_POST['id'];
     $full_name = $_POST['full_name'];
     $age = $_POST['age'];
@@ -92,6 +95,7 @@ if (isset($_POST['patient_update'])){
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $symptoms = $_POST['symptoms'];
+    $target_file = $target_folder . $_FILES['image']['name'];
     
     if (!empty($full_name) and !empty($age) and !empty($city) and !empty($gender) 
             and !empty($phone) and !empty($email) and !empty($symptoms)){
@@ -110,9 +114,16 @@ if (isset($_POST['patient_update'])){
 
         if ($email_res->num_rows==0 or $patient['patient_email']==$email){
             if ($phone_res->num_rows==0 or $patient['patient_phone']==$phone){
+
+                $select_query = "select patient_image from patient where patient_id=$id;";
+                $raw_patient = mysqli_query($connection,$select_query);
+                $patient = mysqli_fetch_assoc($raw_patient);
+                unlink($patient['patient_image']);
+
+                move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
                 $update_patient = "update patient set patient_name='$full_name', patient_age=$age, patient_city='$city',
                                     patient_phone='$phone', patient_email='$email',patient_gender='$gender',
-                                    patient_symtomps='$symptoms' where patient_id=$id";
+                                    patient_symtomps='$symptoms',patient_image='$target_file' where patient_id=$id";
             
                 $response = mysqli_query($connection,$update_patient);
                 if ($response){
