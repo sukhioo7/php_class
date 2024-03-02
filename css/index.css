@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+}
+.nav-section{
+    padding: 5%;
+    width: 100%;
+    display: flex;
+}
+.nav-section div{
+    margin: 2em;
+}
+/* .side-img{
+    width: 100%;
+} */
+.side-img img{
+    width: 30em;
+}
+.nav-section h1{
+    font-family: Dancing Script;
+    font-size: 3.3em;
+}
