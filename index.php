@@ -11,7 +11,7 @@
     <?php include('navbar.php') ?>
     <div class="nav-section">
         <div class="side-img">
-            <img src="img/side_img.png" alt="">
+            <img src="img/hospital.svg" alt="">
         </div>
         <div>
             <h1>Stay Safe, Stay Healthy</h1>
@@ -20,42 +20,42 @@
                 register for an appointment, please visit our website and provide some basic 
                 information. We also offer online bill pay, medical records requests, and patient 
                 education resources. We hope you find our website helpful.</p>
-            <button class="btn btn-outline-danger">Book Appointment</button>
+            <a href="#reg" class="btn btn-outline-danger">Book Appointment</a>
         </div>
     </div>
-    <div class="registration">
+    <div id="reg" class="registration">
         <div class="registration-img">
             <h2>Book <span>Appointment</span></h2>
             <img src="img/registration-img.svg" alt="">
         </div>
         <div class="registration-form">
-        <form class="row g-3">
+        <form action="action.php" method="POST" class="row g-3">
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="inputEmail4" placeholder="John Cina">
+              <input name="full_name" type="text" class="form-control" id="inputEmail4" placeholder="Ex : John Cina">
             </div>
             <div class="col-md-6">
               <label for="inputPassword4" class="form-label">Age</label>
-              <input type="number" class="form-control" id="inputPassword4" placeholder="56">
+              <input name="age" type="number" class="form-control" id="inputPassword4" placeholder="Ex : 34">
             </div>
             <div class="col-12">
               <label for="inputAddress" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputAddress" placeholder="john@gmail.com">
+              <input name="email" type="email" class="form-control" id="inputAddress" placeholder="Ex : john@gmail.com">
             </div>
             <div class="col-12">
               <label for="inputAddress2" class="form-label">Phone</label>
-              <input type="number" class="form-control" id="inputAddress2" placeholder="xxxxxxxx87">
+              <input name="phone" type="number" class="form-control" id="inputAddress2" placeholder="Ex : xxxxxxxx87">
             </div>
             <div class="col-md-7">
               <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="CHD">
+              <input name="city" type="text" class="form-control" id="inputCity" placeholder="Ex : CHD">
             </div>
             <div class="col-md-5">
               <label for="inputCity" class="form-label">Gender</label>
               <div>
-                <input type="radio" class="btn-check" name="gender" id="option5" autocomplete="off" checked>
+                <input type="radio" class="btn-check" name="gender" value="Male" id="option5" autocomplete="off" checked>
                 <label class="btn" for="option5">Male</label>
-                <input type="radio" class="btn-check" name="gender" id="option6" autocomplete="off">
+                <input type="radio" class="btn-check" name="gender" value="Female" id="option6" autocomplete="off">
                 <label class="btn" for="option6">Female</label>
               </div>
             </div>
@@ -67,12 +67,12 @@
             </div>
             <div class="col-12">
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Comments</label>
+                <textarea name="symptoms" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Symptoms</label>
               </div>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn w-100 btn-danger">Registration</button>
+              <button name="registration" type="submit" class="btn w-100 btn-danger">Registration</button>
             </div>
         </form>
         </div>

@@ -8,16 +8,18 @@ body{
     width: 100%;
 }
 .nav-section{
-    padding: 5%;
+    padding: 5% 0;
     width: 100%;
     display: flex;
 }
 .nav-section div{
     margin: 2em;
 }
-/* .side-img{
-    width: 100%;
-} */
+.side-img{
+    /* background-color: aqua; */
+    display: grid;
+    place-items: center;
+}
 .side-img img{
     width: 30em;
 }
