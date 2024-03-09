@@ -25,3 +25,25 @@ body{
     font-family: Dancing Script;
     font-size: 3.3em;
 }
+.registration{
+    display: flex;
+
+}
+.registration-img{
+    width: 45%;
+    display: grid;
+    place-items: center;
+    padding: 2em;
+}
+.registration-form{
+    width: 55%;
+    background-color: #FF5E47;
+    padding: 3em;
+    border-radius: 30px 0 0 30px;
+}
+.registration-img>h2{
+    font-size: 3em;
+}
+.registration-img>h2>span{
+    color: #FF5E47;
+}

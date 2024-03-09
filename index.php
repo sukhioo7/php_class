@@ -23,6 +23,60 @@
             <button class="btn btn-outline-danger">Book Appointment</button>
         </div>
     </div>
+    <div class="registration">
+        <div class="registration-img">
+            <h2>Book <span>Appointment</span></h2>
+            <img src="img/registration-img.svg" alt="">
+        </div>
+        <div class="registration-form">
+        <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="inputEmail4" placeholder="John Cina">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Age</label>
+              <input type="number" class="form-control" id="inputPassword4" placeholder="56">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputAddress" placeholder="john@gmail.com">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label">Phone</label>
+              <input type="number" class="form-control" id="inputAddress2" placeholder="xxxxxxxx87">
+            </div>
+            <div class="col-md-7">
+              <label for="inputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="CHD">
+            </div>
+            <div class="col-md-5">
+              <label for="inputCity" class="form-label">Gender</label>
+              <div>
+                <input type="radio" class="btn-check" name="gender" id="option5" autocomplete="off" checked>
+                <label class="btn" for="option5">Male</label>
+                <input type="radio" class="btn-check" name="gender" id="option6" autocomplete="off">
+                <label class="btn" for="option6">Female</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="formFile" class="form-label">Patient Image</label>
+                <input class="form-control" type="file" id="formFile">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn w-100 btn-danger">Registration</button>
+            </div>
+        </form>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
