@@ -29,7 +29,7 @@
             <img src="img/registration-img.svg" alt="">
         </div>
         <div class="registration-form">
-        <form action="action.php" method="POST" class="row g-3">
+        <form action="action.php" enctype="multipart/form-data" method="POST" class="row g-3">
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Full Name</label>
               <input name="full_name" type="text" class="form-control" id="inputEmail4" placeholder="Ex : John Cina">
@@ -62,7 +62,7 @@
             <div class="col-12">
               <div class="mb-3">
                 <label for="formFile" class="form-label">Patient Image</label>
-                <input class="form-control" type="file" id="formFile">
+                <input name="image" class="form-control" type="file" id="formFile">
               </div>
             </div>
             <div class="col-12">
