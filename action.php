@@ -32,15 +32,19 @@ if (isset($_POST['registration'])){
                                         ('$full_name',$age,'$email','$phone','$gender','$city','$symptoms','$target_file');";
             
                 $res = mysqli_query($response,$insert_patient_query);
-                echo 'Patient Registered';
+                setcookie('success','account-created',time()+10,'/');
+                header('location:index.php');
             }else{
-                echo 'Phone Exist';
+                setcookie('error','phone-exist',time()+10,'/');
+                header('location:index.php');
             }
         }else{
-            echo 'Email Exist';
+            setcookie('error','email-exist',time()+10,'/');
+            header('location:index.php');
         }
     }else{
-        echo 'Empty Fields';
+        setcookie('error','empty-fields',time()+10,'/');
+        header('location:index.php');
     }
 }
 
@@ -69,7 +73,7 @@ if (isset($_GET['delete'])){
 ?>
 
 
-<!--------------------------------- Patient Delete ----------------------------------------->
+<!--------------------------------- Patient Update ----------------------------------------->
 
 <?php
 
@@ -94,3 +98,6 @@ if (isset($_POST['patient_update'])){
 }
 
 ?>
+
+<!--------------------------------- Patient Search ----------------------------------------->
+

@@ -30,6 +30,28 @@
         </div>
         <div class="registration-form">
         <form action="action.php" enctype="multipart/form-data" method="POST" class="row g-3">
+            <?php
+                if (isset($_COOKIE['success'])){
+            ?>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Patient Registered!</strong> Registration Done ;).
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php
+                }
+            ?>
+            <?php
+                if (isset($_COOKIE['error'])){
+                  if ($_COOKIE['error']=='empty-fields'){
+            ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Empty Feilds!</strong> Please Fill all the fields.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php
+                  }
+                }
+            ?>
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Full Name</label>
               <input name="full_name" type="text" class="form-control" id="inputEmail4" placeholder="Ex : John Cina">
@@ -39,10 +61,34 @@
               <input name="age" type="number" class="form-control" id="inputPassword4" placeholder="Ex : 34">
             </div>
             <div class="col-12">
+              <?php
+                  if (isset($_COOKIE['error'])){
+                    if ($_COOKIE['error']=='email-exist'){
+              ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Email Exist!</strong> This Email is already in use.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+              <?php
+                    }
+                  }
+              ?>
               <label for="inputAddress" class="form-label">Email</label>
               <input name="email" type="email" class="form-control" id="inputAddress" placeholder="Ex : john@gmail.com">
             </div>
             <div class="col-12">
+            <?php
+                  if (isset($_COOKIE['error'])){
+                    if ($_COOKIE['error']=='phone-exist'){
+              ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Phone Exist!</strong> This Phone is already in use.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+              <?php
+                    }
+                  }
+              ?>
               <label for="inputAddress2" class="form-label">Phone</label>
               <input name="phone" type="number" class="form-control" id="inputAddress2" placeholder="Ex : xxxxxxxx87">
             </div>
