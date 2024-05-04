@@ -99,5 +99,54 @@ if (isset($_POST['patient_update'])){
 
 ?>
 
-<!--------------------------------- Patient Search ----------------------------------------->
+<!--------------------------------- Patient Signup ----------------------------------------->
+<?php
+if (isset($_POST['signup'])){
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $designation = $_POST['designation'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
+    if (!empty($first_name) and !empty($last_name) and !empty($email) and !empty($phone)
+        and !empty($designation) and !empty($password) and !empty($confirm_password)){
+
+        $email_query = "select * from staff where staff_email='$email'";
+        $check_email = mysqli_query($response,$email_query);
+        if ($check_email->num_rows==0){
+            $phone_query = "select * from staff where staff_phone='$phone'";
+            $check_phone = mysqli_query($response,$phone_query);
+            if ($check_phone->num_rows==0){
+                if ($password==$confirm_password){
+                    $encrypted_password = password_hash($password,PASSWORD_DEFAULT);
+                    move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
+                    $insert_staff_query = "insert into staff(staff_name,staff_phone,staff_email,staff_designation,staff_password) 
+                                            values 
+                                            ('$first_name $last_name','$phone','$email','$designation','$encrypted_password');";
+                
+                    $res = mysqli_query($response,$insert_staff_query);
+                    setcookie('success','account-created',time()+10,'/');
+                    header('location:signup.php');
+                }
+                else{
+                    setcookie('error','password',time()+10,'/');
+                    header('location:signup.php');
+                }
+            }else{
+                setcookie('error','phone-exist',time()+10,'/');
+                header('location:signup.php');
+            }
+        }else{
+            setcookie('error','email-exist',time()+10,'/');
+            header('location:signup.php');
+        }
+    }else{
+        // echo $first_name,$last_name,$phone,$designation,$email,$password,$confirm_password;
+        setcookie('error','empty-fields',time()+10,'/');
+        header('location:signup.php');
+    }
+}
+
+?>
