@@ -53,6 +53,9 @@ if (isset($_POST['registration'])){
 <!--------------------------------- Patient Delete ----------------------------------------->
 <?php
 if (isset($_GET['delete'])){
+    if(!isset($_SESSION['staff_id'])){
+        header('location:login.php');
+    }
     $patient_id = $_GET['delete'];
 
     $select_query = "select patient_image from patients where patient_id=$patient_id;";
@@ -78,6 +81,9 @@ if (isset($_GET['delete'])){
 <?php
 
 if (isset($_POST['patient_update'])){
+    if(!isset($_SESSION['staff_id'])){
+        header('location:login.php');
+    }
     $id = $_POST['id'];
     $full_name = $_POST['full_name'];
     $age = $_POST['age'];
@@ -149,4 +155,53 @@ if (isset($_POST['signup'])){
     }
 }
 
+?>
+
+<!--------------------------------- Patient Login ----------------------------------------->
+
+<?php
+if (isset($_POST['login'])){
+    $email = $_POST['email'];
+    $staff_password = $_POST['password'];
+
+    if (!empty($email) and !empty($staff_password)){
+        $staff_query = "select * from staff where staff_email='$email';";
+
+        $raw_data = mysqli_query($response,$staff_query);
+
+        $staff = mysqli_fetch_assoc($raw_data);
+        if ($raw_data->num_rows==1){
+            $password = $staff['staff_password'];
+
+            $pass_check = password_verify($staff_password,$password);
+            if ($pass_check){
+                session_start();
+                $_SESSION['staff_id'] = $staff['staff_id'];
+                $_SESSION['staff_name'] = $staff['staff_name'];
+                $_SESSION['staff_designation'] = $staff['staff_designation'];
+                header('location:index.php');
+            }else{
+                setcookie('error','incorrect',time()+10,'/');
+                header('location:login.php');  
+            }
+        }else{
+            setcookie('error','incorrect',time()+10,'/');
+            header('location:login.php');  
+        }
+    }else{
+        setcookie('error','empty-fields',time()+10,'/');
+        header('location:login.php');
+        // echo $email,$staff_password;
+    }
+
+}
+?>
+
+<!--------------------------------- Patient Logout ----------------------------------------->
+<?php
+if (isset($_GET['logout'])){
+    session_start();
+    session_destroy();
+    header('location:login.php');
+}
 ?>

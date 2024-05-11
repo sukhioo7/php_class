@@ -16,6 +16,9 @@
         </div>
         <div class="patients">
             <?php
+                if(!isset($_SESSION['staff_id'])){
+                    header('location:login.php');
+                }
                 if (isset($_POST['search-btn'])){
                     $query = $_POST['search'];
                 
@@ -42,8 +45,18 @@
                                         <p><b>Phone : </b>+91 <?php echo $patient['patient_phone']; ?></p>
                                     </div>
                                 </div>
-                                <a href="action.php?delete=<?php echo $patient['patient_id']; ?>" class="btn btn-outline-danger w-100">Delete</a>
-                                <a href="update_patient.php?update=<?php echo $patient['patient_id']; ?>" class="btn mt-2 btn-outline-success w-100">Update</a>
+                                <?php
+                                if (isset($_SESSION['staff_designation'])){
+                                    if ($_SESSION['staff_designation']=='doctor'){
+                                ?>
+
+                                    <a href="action.php?delete=<?php echo $patient['patient_id']; ?>" class="btn btn-outline-danger w-100">Delete</a>
+                                    <a href="update_patient.php?update=<?php echo $patient['patient_id']; ?>" class="btn mt-2 btn-outline-success w-100">Update</a>
+                                    
+                                <?php
+                                    }
+                                }
+                                ?>
                             </div>
                 <?php
                             }
@@ -75,8 +88,19 @@
                                         <p><b>Phone : </b>+91 <?php echo $patient['patient_phone']; ?></p>
                                     </div>
                                 </div>
-                                <a href="action.php?delete=<?php echo $patient['patient_id']; ?>" class="btn btn-outline-danger w-100">Delete</a>
-                                <a href="update_patient.php?update=<?php echo $patient['patient_id']; ?>" class="btn mt-2 btn-outline-success w-100">Update</a>
+                                <?php
+                                if (isset($_SESSION['staff_designation'])){
+                                    if ($_SESSION['staff_designation']=='doctor'){
+                                ?>
+
+                                    <a href="action.php?delete=<?php echo $patient['patient_id']; ?>" class="btn btn-outline-danger w-100">Delete</a>
+                                    <a href="update_patient.php?update=<?php echo $patient['patient_id']; ?>" class="btn mt-2 btn-outline-success w-100">Update</a>
+                                    
+                                <?php
+                                    }
+                                }
+                                ?>
+                               
                             </div>
                 <?php
                             }
