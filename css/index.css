@@ -1,51 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    width: 100%;
-}
-.nav-section{
-    padding: 5% 0;
-    width: 100%;
-    display: flex;
-}
-.nav-section div{
-    margin: 2em;
-}
-.side-img{
+nav{
     /* background-color: aqua; */
-    display: grid;
-    place-items: center;
+    padding-top: 2%;
 }
-.side-img img{
-    width: 30em;
-}
-.nav-section h1{
-    font-family: Dancing Script;
-    font-size: 3.3em;
-}
-.registration{
+.nav-main{
     display: flex;
-
+    margin: 3% 10%;
 }
-.registration-img{
-    width: 45%;
-    display: grid;
-    place-items: center;
-    padding: 2em;
+.nav-main img{
+    width: 130%;
 }
-.registration-form{
-    width: 55%;
-    background-color: #FF5E47;
-    padding: 3em;
-    border-radius: 30px 0 0 30px;
+.nav-content{
+    margin-right: 25%;
 }
-.registration-img>h2{
-    font-size: 3em;
-}
-.registration-img>h2>span{
-    color: #FF5E47;
+.nav-links a{
+    color: black;
+    text-decoration: none;
+    margin: 1em;
 }
