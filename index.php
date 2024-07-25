@@ -10,6 +10,7 @@
   <body>
     <nav>
       <div class='header'>
+        <h3> <span class='logo-img'><img src="img/logo.png" alt=""></span> Doaba Hospital</h3>
         <div class='nav-links'>
           <a href="">Home</a>
           <a href="">About</a>
@@ -26,7 +27,7 @@
                illum alias esse culpa? Dolore, ducimus.</p>
         </div>
         <div class='nav-img'>
-            <img src="doc.png" alt="">
+            <img src="img/doc.png" alt="">
         </div>
       </div>
     </nav>
