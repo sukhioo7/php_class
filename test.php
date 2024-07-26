@@ -7,19 +7,19 @@
   position: relative;
 }
 
-a:after {
+.image:after {
   content: '';
   position: absolute;
   bottom: -3px; /* Adjust the bottom position */
   left: 0;
   width: 100%;
   height: 2px; /* Adjust the height of the underline */
-  background-color: #333; /* Adjust the color of the underline */
+  background-color: red; /* Adjust the color of the underline */
   transform: scaleX(0); /* Initially hide the underline */
   transition: transform 0.3s ease-in-out; /* Add a transition effect */
 }
 
-a:hover:after {
+.image:hover:after {
   transform: scaleX(1); /* Show the underline on hover */
 }
 
@@ -28,6 +28,8 @@ a:hover:after {
     <title>Document</title>
 </head>
 <body>
-<a href="#">Home</a>
+<div class="image">
+  <img src='img/doc.png'>Home</img>
+</div>
 </body>
 </html>

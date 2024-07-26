@@ -20,13 +20,15 @@
         </div>
       </div>
       <div class='nav-main'>
+
         <div class='nav-content'>
             <h1>Wellcome</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur sunt laudantium 
-              sint, deleniti reiciendis eos minus natus distinctio cumque animi aut? Nemo et officiis
-               illum alias esse culpa? Dolore, ducimus.</p>
+            <p>This hospital was started by Dr. Ashutosh Gupta, M.D, in the year 1988 at a much smallerplace with only paediatric and gynae deparments. He decided to move to the present premises,known to be one of the largest hospital premises in the town, after getting positive response from the patients his dedication and enthusiasm encouraged him to gradually add other facilities namely Paediatric surgery, Neuro surgery,General surgery, Orthopaedics, Medicine, ENT, Eye and Dental in order to provide super specialised facilities under one roof.</p>
         </div>
         <div class='nav-img'>
+          <div class="glass">
+
+          </div>
             <img src="img/doc.png" alt="">
         </div>
       </div>
