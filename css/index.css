@@ -116,3 +116,6 @@ nav{
     font-size: 2.1em;
     padding: 0.4em;
 }
+.patient-form form input,.patient-form form select,.patient-form form textarea{
+    border: 1px solid #686D76;
+}
