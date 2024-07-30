@@ -33,6 +33,84 @@
         </div>
       </div>
     </nav>
+    <main>
+      <div class='patient-form'>
+        <h2 class='text-center m-2'>Patient Registeration</h2>
+        <form action="" class='m-3'>
+          <div class='container mt-3'>
+            <div class='row'>
+              <div class='col'>
+                <div class="form-floating mb-3 ">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Ex : John Cina">
+                  <label for="floatingInput">Full Name</label>
+                </div>
+              </div>
+              <div class='col'>
+                <div class="form-floating col-md">
+                  <input type="number" class="form-control" id="floatingPassword" placeholder="Ex : 23">
+                  <label for="floatingPassword">Age</label>
+                </div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col'>
+                <div class="form-floating mb-3 ">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="Ex : netmax@gmail.com">
+                  <label for="floatingInput">Email</label>
+                </div>
+              </div>
+            </div>
+            <!-- Phone Number row  -->
+            <div class='row'>
+              <div class='col'>
+                <div class="form-floating mb-3 ">
+                  <input type="number" class="form-control" id="floatingInput" placeholder="Ex : 4535643673">
+                  <label for="floatingInput">Phone</label>
+                </div>
+              </div>
+            </div>
+            <!-- Phone image,city,gender row  -->
+            <div class='row'>
+              <div class='col'>
+                <div class="form-floating mb-3 ">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Ex : CHD">
+                  <label for="floatingInput">City</label>
+                </div>
+              </div>
+              <div class='col d-flex align-items-center'>
+                <div>
+                  <!-- <label for="formFileLg" class="form-label">Large file input example</label> -->
+                  <input class="form-control form-control-lg" id="formFileLg" type="file">
+                </div>
+              </div>
+              <div class='col'>
+                <div class="form-floating">
+                  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <option selected>--</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <label for="floatingSelect">Gender</label>
+                </div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col'>
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                  <label for="floatingTextarea2">Symptoms</label>
+                </div>
+              </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                  <button class='btn btn-outline-dark w-100 mt-2'>Register</button>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

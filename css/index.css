@@ -29,19 +29,19 @@ nav{
     position: absolute;
     width: 400px;
     height: 400px;
-    right: 0;
-    padding: 2em 2em 0 2em;
+    right:20px;
+    /* padding: 2em 2em 0 2em; */
     background: rgba(255, 255, 255, 0.17);
     border-radius: 8em ;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transform: rotate(34deg);
+    transform: rotate(34deg) scale(1);
     transition: transform 0.3s ease-in-out;
 }
 .nav-img:hover  .glass{
-    transform: rotate(46deg);
+    transform: rotate(26deg) scale(1.1);
     /* transform: scale(1.02); */
 }
 .nav-content{
@@ -75,7 +75,7 @@ nav{
 .nav-links a::after {
     content: '';
     width: 100%;
-    height: 0.1em;
+    height: 2px;
     left: 0;
     bottom: -2px;
     position: absolute;
@@ -104,4 +104,15 @@ nav{
 .logo-img img{
     width: 50px;
     /* background-color: aqua; */
+}
+
+.patient-form{
+    margin: 2em 0;
+}
+.patient-form h2{
+    font-family: "Playwrite BE VLG";
+    color: #3FA2F6;
+    font-weight: bold;
+    font-size: 2.1em;
+    padding: 0.4em;
 }
