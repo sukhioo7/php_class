@@ -9,16 +9,7 @@
   </head>
   <body>
     <nav>
-      <div class='header'>
-        <h3> <span class='logo-img'><img src="img/logo.png" alt=""></span> Doaba Hospital</h3>
-        <div class='nav-links'>
-          <a href="">Home</a>
-          <a href="">About</a>
-          <a href="">Contact Us</a>
-          <a href="">Doctos</a>
-          <a href="">Patients</a>
-        </div>
-      </div>
+      <?php include('navbar.php'); ?>  
       <div class='nav-main'>
 
         <div class='nav-content'>
