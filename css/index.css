@@ -119,3 +119,6 @@ nav{
 .patient-form form input,.patient-form form select,.patient-form form textarea{
     border: 1px solid #686D76;
 }
+main{
+    height: 42em;
+}

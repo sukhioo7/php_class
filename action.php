@@ -12,25 +12,37 @@ if (isset($_POST['patient_register'])){
     $phone = $_POST['phone'];
     $symptoms = $_POST['symptoms'];
 
-    // if (!empty($name) and !empty($age) and !empty($city) and !empty($gender) and !empty($email)
-    //      and !empty($phone) and !empty($symptoms)){
+    if (!empty($name) and !empty($age) and !empty($city) and !empty($gender) and !empty($email)
+         and !empty($phone) and !empty($symptoms)){
 
         $check_email = "select * from patients where patient_email='$email'";
+        $check_phone = "select * from patients where patient_phone='$phone'";
         
-        $patients = mysqli_query($response,$check_email);
+        $patient = mysqli_query($response,$check_email);
+        
+        if ($patient->num_rows==0){
 
-        print_r($patients);
+            $patient = mysqli_query($response,$check_phone);
 
-        // $patient_insert = "insert into patients(patient_name,patient_age,patient_city,patient_gender,
-        // patient_email,patient_phone,patient_symptoms) values 
-        // ('$name',$age,'$city','$gender','$email','$phone','$symptoms') ";
+            if ($patient->num_rows==0){
 
-        // $result = mysqli_query($response,$patient_insert);
-        // header('location:success.php');
+                $patient_insert = "insert into patients(patient_name,patient_age,patient_city,patient_gender,
+                patient_email,patient_phone,patient_symptoms) values 
+                ('$name',$age,'$city','$gender','$email','$phone','$symptoms') ";
 
-    // }else{
-    //     echo 'Please Fill All the Fields.';
-    // }
+                $result = mysqli_query($response,$patient_insert);
+                header('location:success.php');
+
+            }else{
+                echo 'This Phone is already in use.';
+            }
+
+        }else{
+            echo 'This email is already in use.';
+        }
+    }else{
+        echo 'Please Fill All the Fields.';
+    }
 
     
  
