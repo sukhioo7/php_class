@@ -19,34 +19,54 @@
         </div>
         <div class="card-section">
             <ul class="cards">
-                <li>
-                    <div href="" class="card">
-                        <div class="img-div">
-                            <img src="img/patient.jpg" class="card__image" alt="" />
-                        </div>
-                        <div class="card__overlay">
-                            <div class="card__header">
-                            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
-                            <div class="card__header-text">
-                                <h3 class="card__title">Jessica Parker</h3>            
-                                <span class="card__status">Patient ID : 12</span>
-                            </div>
-                            </div>
-                            <div class="card__description">
-                                <p>
-                                    <span><b>Age: </b>23</span>
-                                    <span><b>Gender: </b>Male</span>
-                                    <span><b>City: </b>Chandigarh</span>
-                                </p>
-                                <p><b>Symptoms: </b>Fever and Cold</p>
-                                <div class="edit-patient">
-                                    <a class="btn btn-success ">Edit</a>
-                                    <a class="btn btn-danger ">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </li>
+                <?php
+                    include('connection.php');
+
+                    $select_patients = "select * from patients;";
+                        
+                    $patients = mysqli_query($response,$select_patients);
+
+                    if ($patients->num_rows!=0){
+                       
+                       while($patient =  mysqli_fetch_assoc($patients)){
+                ?>
+                            <li>
+                                <div href="" class="card">
+                                    <div class="img-div">
+                                        <img src="img/patient.jpg" class="card__image" alt="" />
+                                    </div>
+                                    <div class="card__overlay">
+                                        <div class="card__header">
+                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                                        <div class="card__header-text">
+                                            <h3 class="card__title">Jessica Parker</h3>            
+                                            <span class="card__status">Patient ID : 12</span>
+                                        </div>
+                                        </div>
+                                        <div class="card__description">
+                                            <p>
+                                                <span><b>Age: </b>23</span>
+                                                <span><b>Gender: </b>Male</span>
+                                                <span><b>City: </b>Chandigarh</span>
+                                            </p>
+                                            <p><b>Symptoms: </b>Fever and Cold</p>
+                                            <div class="edit-patient">
+                                                <a class="btn btn-success ">Edit</a>
+                                                <a class="btn btn-danger ">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                <?php
+                       }
+
+                        
+                    }
+
+
+                ?>
+                
             </ul>     
         </div>
     </main>
