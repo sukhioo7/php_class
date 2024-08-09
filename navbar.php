@@ -5,6 +5,6 @@
           <a href="about.php">About</a>
           <a href="contact.php">Contact Us</a>
           <a href="">Doctos</a>
-          <a href="">Patients</a>
+          <a href="patients.php">Patients</a>
         </div>
 </div>
