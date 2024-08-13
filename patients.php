@@ -29,6 +29,7 @@
                     if ($patients->num_rows!=0){
                        
                        while($patient =  mysqli_fetch_assoc($patients)){
+                        // print_r($patient);
                 ?>
                             <li>
                                 <div href="" class="card">
@@ -39,20 +40,20 @@
                                         <div class="card__header">
                                         <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
                                         <div class="card__header-text">
-                                            <h3 class="card__title">Jessica Parker</h3>            
-                                            <span class="card__status">Patient ID : 12</span>
+                                            <h3 class="card__title"><?php echo $patient['patient_name']; ?></h3>            
+                                            <span class="card__status">Patient ID : <?php echo $patient['patient_id']; ?></span>
                                         </div>
                                         </div>
                                         <div class="card__description">
                                             <p>
-                                                <span><b>Age: </b>23</span>
-                                                <span><b>Gender: </b>Male</span>
-                                                <span><b>City: </b>Chandigarh</span>
+                                                <span><b>Age: </b><?php echo $patient['patient_age']; ?></span>
+                                                <span><b>Gender: </b><?php echo $patient['patient_gender']; ?></span>
+                                                <span><b>City: </b><?php echo $patient['patient_city']; ?></span>
                                             </p>
-                                            <p><b>Symptoms: </b>Fever and Cold</p>
+                                            <p><b>Symptoms: </b><?php echo $patient['patient_symptoms']; ?></p>
                                             <div class="edit-patient">
-                                                <a class="btn btn-success ">Edit</a>
-                                                <a class="btn btn-danger ">Delete</a>
+                                                <a href="update.php?patient_id=<?php echo $patient['patient_id']; ?>" class="btn btn-success ">Edit</a>
+                                                <a href='action.php?patient_id=<?php echo $patient['patient_id']; ?>' class="btn btn-danger ">Delete</a>
                                             </div>
                                         </div>
                                     </div>

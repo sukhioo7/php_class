@@ -49,3 +49,21 @@ if (isset($_POST['patient_register'])){
 }
 
 ?>
+
+<?php
+    if (isset($_GET['patient_id'])){
+        $id = $_GET['patient_id'];
+        
+        $delete_query = "delete from patients where patient_id=$id;";
+
+        $output = mysqli_query($response,$delete_query);
+
+        // echo $output;
+        if ($output){
+            header('location:patients.php');
+        }else{
+            echo "Server Error";
+        }
+    }
+
+?>
