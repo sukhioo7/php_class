@@ -30,6 +30,7 @@
 
         ?>
         <form action="action.php" method='post' class='m-3'>
+          <input type="hidden" name='id' value="<?php echo $patient['patient_id'] ?>" >
           <div class='container mt-3'>
             <div class='row'>
               <div class='col'>
@@ -48,8 +49,9 @@
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">
-                  <input type="email" class="form-control" value="<?php echo $patient['patient_email'] ?>" name='email' id="floatingInput" placeholder="Ex : netmax@gmail.com">
-                  <label for="floatingInput">Email</label>
+                  <!-- <p><?php echo $patient['patient_email'] ?></p> -->
+                  <input readonly type="email" style="border: 1px solid red;" class="form-control" value="<?php echo $patient['patient_email'] ?>" name='email' id="floatingInput" placeholder="Ex : netmax@gmail.com">
+                  <label for="floatingInput">Email (View Only)</label>
                 </div>
               </div>
             </div>
@@ -57,8 +59,8 @@
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">
-                  <input type="number" class="form-control" value="<?php echo $patient['patient_phone'] ?>" name='phone' id="floatingInput" placeholder="Ex : 4535643673">
-                  <label for="floatingInput">Phone</label>
+                  <input readonly type="number"  style="border: 1px solid red;"  class="form-control" value="<?php echo $patient['patient_phone'] ?>" name='phone' id="floatingInput" placeholder="Ex : 4535643673">
+                  <label for="floatingInput">Phone  (View Only)</label>
                 </div>
               </div>
             </div>
@@ -107,7 +109,7 @@
             </div>
             <div class='row'>
                 <div class='col'>
-                  <button name='patient_register' class='btn btn-outline-dark w-100 mt-2'>Update</button>
+                  <button name='update_patient' class='btn btn-outline-dark w-100 mt-2'>Update</button>
                 </div>
             </div>
           </div>

@@ -67,3 +67,37 @@ if (isset($_POST['patient_register'])){
     }
 
 ?>
+
+
+<?php
+
+if (isset($_POST['update_patient'])){
+    
+    $id = $_POST['id']; 
+    $name = $_POST['full_name']; 
+    $age = $_POST['age'];
+    $city = $_POST['city'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $symptoms = $_POST['symptoms'];
+
+    if (!empty($name) and !empty($age) and !empty($city) and !empty($gender) and !empty($email)
+         and !empty($phone) and !empty($symptoms)){
+
+        $patient_update = "update patients set patient_name='$name', patient_age=$age, patient_gender='$gender',
+                            patient_email='$email', patient_phone=$phone, patient_city='$city', 
+                            patient_symptoms='$symptoms' where patient_id=$id";
+
+        $result = mysqli_query($response,$patient_update);
+        header("location:update.php?patient_id=$id");
+
+    }else{
+        echo 'Please Fill All the Fields.';
+    }
+
+    
+ 
+}
+
+?>

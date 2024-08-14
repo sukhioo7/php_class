@@ -7,4 +7,8 @@
           <a href="">Doctos</a>
           <a href="patients.php">Patients</a>
         </div>
+        <div class="log-sign">
+          <a href="">Login</a>
+          <a href="">Signup</a>
+        </div>
 </div>
