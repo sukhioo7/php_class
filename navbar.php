@@ -8,7 +8,7 @@
           <a href="patients.php">Patients</a>
         </div>
         <div class="log-sign">
-          <a href="">Login</a>
-          <a href="">Signup</a>
+          <a href="login.php">Login</a>
+          <a href="signup.php">Signup</a>
         </div>
 </div>
