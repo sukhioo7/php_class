@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Success</title>
+    <title>Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/signup.css">
@@ -27,10 +27,10 @@
               </div>
               <div class='col'>
                 <div class="form-floating">
-                  <select name='gender' class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option selected value="Male">-</option>
-                    <option value="Male">Doctor</option>
-                    <option value="Female">Nurse</option>
+                  <select name='designation' class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <option selected>-</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="nurse">Nurse</option>
                   </select>
                   <label for="floatingSelect">Designation</label>
                 </div>
@@ -48,7 +48,7 @@
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">
-                  <input type="password"  class="form-control"  name='phone' id="floatingInput" placeholder="Ex : 4535643673">
+                  <input type="password"  class="form-control"  name='password' id="floatingInput" placeholder="Ex : 4535643673">
                   <label for="floatingInput">Password</label>
                 </div>
               </div>
@@ -56,8 +56,8 @@
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">
-                  <input type="password"  class="form-control"  name='phone' id="floatingInput" placeholder="Ex : 4535643673">
-                  <label for="floatingInput">Password Comfirm</label>
+                  <input type="password"  class="form-control"  name='confirm_password' id="floatingInput" placeholder="Ex : 4535643673">
+                  <label for="floatingInput">Password Confirm</label>
                 </div>
               </div>
             </div>

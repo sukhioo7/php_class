@@ -101,3 +101,49 @@ if (isset($_POST['update_patient'])){
 }
 
 ?>
+
+
+<?php
+
+if (isset($_POST['signup'])){
+    
+    $name = $_POST['full_name']; 
+    $designation = $_POST['designation'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if (!empty($name) and !empty($designation) and !empty($email) and !empty($password)
+         and !empty($confirm_password)){
+
+        $check_email = "select * from employees where emp_email='$email'";
+        
+        $emp = mysqli_query($response,$check_email);
+        
+        if ($emp->num_rows==0){
+
+            if ($password==$confirm_password){
+
+                $emp_insert = "insert into employees (emp_name,emp_designation,emp_email,emp_password) values 
+                ('$name','$designation','$email','$password');";
+    
+                $result = mysqli_query($response,$emp_insert);
+                print_r($result);
+                header('location:success.php');
+
+            }else{
+                echo 'Password Do not Matched';
+            }
+
+        }else{
+            echo 'This email is already in use.';
+        }
+    }else{
+        echo 'Please Fill All the Fields.';
+    }
+
+    
+ 
+}
+
+?>
