@@ -124,8 +124,10 @@ if (isset($_POST['signup'])){
 
             if ($password==$confirm_password){
 
+                $encryped_password = password_hash($password,PASSWORD_ARGON2I);
+
                 $emp_insert = "insert into employees (emp_name,emp_designation,emp_email,emp_password) values 
-                ('$name','$designation','$email','$password');";
+                ('$name','$designation','$email','$encryped_password');";
     
                 $result = mysqli_query($response,$emp_insert);
                 print_r($result);
