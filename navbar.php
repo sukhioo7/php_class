@@ -12,3 +12,9 @@
           <a href="signup.php">Signup</a>
         </div>
 </div>
+<div class="search">
+    <form action="patients.php" method="post">
+        <input name="search" type="text" placeholder='Search for patients...'>
+        <button name="search-btn">Search</button>
+    </form>
+</div>

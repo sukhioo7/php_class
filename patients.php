@@ -21,11 +21,17 @@
             <ul class="cards">
                 <?php
                     include('connection.php');
-
-                    $select_patients = "select * from patients;";
+                    if(isset($_POST['search-btn'])){
+                        $query = $_POST['search'];
+                        $select_patients = "select * from patients where patient_name like '%$query%' or 
+                        patient_email like '%$query%' or patient_phone like '%$query%' or patient_symptoms like '%$query%'
+                        or patient_age like '%$query%';";
+                    }else{
+                        $select_patients = "select * from patients;";
+                    }
                         
                     $patients = mysqli_query($response,$select_patients);
-
+           
                     if ($patients->num_rows!=0){
                        
                        while($patient =  mysqli_fetch_assoc($patients)){
