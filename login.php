@@ -16,7 +16,6 @@
     <div class='patient-form'>
         <h2 class='text-center m-2'>Login</h2>
         <form action="action.php" method='post' class='m-3'>
-          <input type="hidden" name='id'  >
           <div class='container mt-3'>
         
             <div class='row'>
@@ -31,7 +30,7 @@
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">
-                  <input type="password"  class="form-control"  name='phone' id="floatingInput" placeholder="Ex : 4535643673">
+                  <input type="password"  class="form-control"  name='password' id="floatingInput" placeholder="Ex : 4535643673">
                   <label for="floatingInput">Password</label>
                 </div>
               </div>

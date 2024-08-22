@@ -144,8 +144,39 @@ if (isset($_POST['signup'])){
         echo 'Please Fill All the Fields.';
     }
 
-    
- 
+}
+
+?>
+
+<?php
+
+if (isset($_POST['login'])){
+    $user_email = $_POST['email'];
+    $user_password = $_POST['password'];
+
+    if (!empty($user_email) or !empty($user_password)){
+        $emp_query = "select * from employees where emp_email='$user_email'";
+
+        $raw_data = mysqli_query($response,$emp_query);
+
+        if ($raw_data->num_rows!=0){
+            $employee = mysqli_fetch_assoc($raw_data);
+
+            $result = password_verify($user_password,$employee['emp_password']);
+
+            if ($result){
+                echo 'Login';
+                // $_SESSION['emp_id'] = employees['emp_id'];
+                // $_SESSION['emp_name'] = employees['emp_name'];
+            }else{
+                echo 'Your Email or Password is incorrect.';
+            }
+        }else{
+            echo 'Your Email or Password is incorrect.';
+        }
+    }else{
+        echo 'Please Fill all the fields.';
+    }
 }
 
 ?>
