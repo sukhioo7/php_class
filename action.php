@@ -130,18 +130,25 @@ if (isset($_POST['signup'])){
                 ('$name','$designation','$email','$encryped_password');";
     
                 $result = mysqli_query($response,$emp_insert);
-                print_r($result);
-                header('location:success.php');
-
+                if ($result){
+                    setcookie('success','Account Created Successfuly :) ',time()+10,'/');
+                    header('location:signup.php');
+                }else{
+                    setcookie('error','Something Bad Happend.',time()+10,'/');
+                    header('location:signup.php');
+                }
             }else{
-                echo 'Password Do not Matched';
+                setcookie('error','Password Do Not Matched.',time()+10,'/');
+                header('location:signup.php');
             }
 
         }else{
-            echo 'This email is already in use.';
+            setcookie('error','This Email Is Already Exist.',time()+10,'/');
+            header('location:signup.php');
         }
     }else{
-        echo 'Please Fill All the Fields.';
+        setcookie('error','Please Fill all the fields.',time()+10,'/');
+        header('location:signup.php');
     }
 
 }
@@ -169,13 +176,16 @@ if (isset($_POST['login'])){
                 // $_SESSION['emp_id'] = employees['emp_id'];
                 // $_SESSION['emp_name'] = employees['emp_name'];
             }else{
-                echo 'Your Email or Password is incorrect.';
+                setcookie('error','Your Email or Password is incorrect.',time()+10,'/');
+                header('location:login.php');
             }
         }else{
-            echo 'Your Email or Password is incorrect.';
+            setcookie('error','Your Email or Password is incorrect.',time()+10,'/');
+            header('location:login.php');
         }
     }else{
-        echo 'Please Fill all the fields.';
+        setcookie('error','Please Fill all the fields.',time()+10,'/');
+        header('location:login.php');
     }
 }
 

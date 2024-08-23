@@ -17,6 +17,16 @@
         <h2 class='text-center m-2'>Login</h2>
         <form action="action.php" method='post' class='m-3'>
           <div class='container mt-3'>
+            <?php
+                if (isset($_COOKIE['error'])){
+            ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong><?php echo $_COOKIE['error'] ?> !</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php
+                }
+            ?>
         
             <div class='row'>
               <div class='col'>
