@@ -32,6 +32,26 @@
         <form action="action.php" method='post' class='m-3'>
           <input type="hidden" name='id' value="<?php echo $patient['patient_id'] ?>" >
           <div class='container mt-3'>
+          <?php
+                if (isset($_COOKIE['success'])){
+            ?>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong><?php echo $_COOKIE['success'] ?> </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php 
+                }
+            ?>
+          <?php
+                if (isset($_COOKIE['error'])){
+            ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong><?php echo $_COOKIE['error'] ?> !</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            <?php
+                }
+            ?>
             <div class='row'>
               <div class='col'>
                 <div class="form-floating mb-3 ">

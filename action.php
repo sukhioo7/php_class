@@ -31,17 +31,27 @@ if (isset($_POST['patient_register'])){
                 ('$name',$age,'$city','$gender','$email','$phone','$symptoms') ";
 
                 $result = mysqli_query($response,$patient_insert);
-                header('location:success.php');
+                
+                if ($result){
+                    // setcookie('success','Record Updated Successfuly.',time()+10,'/');
+                    header('location:success.php');
+                }else{
+                    setcookie('error','Something Bad Happend.',time()+10,'/');
+                    header('location:index.php');
+                }
 
             }else{
-                echo 'This Phone is already in use.';
+                setcookie('error','This Phone Is Already Exist.',time()+10,'/');
+                header('location:index.php');
             }
 
         }else{
-            echo 'This email is already in use.';
+            setcookie('error','This Phone Is Already Exist.',time()+10,'/');
+            header('location:index.php');
         }
     }else{
-        echo 'Please Fill All the Fields.';
+        setcookie('error','Please Fill all the fields',time()+10,'/');
+        header("location:index.php");
     }
 
     
@@ -90,10 +100,17 @@ if (isset($_POST['update_patient'])){
                             patient_symptoms='$symptoms' where patient_id=$id";
 
         $result = mysqli_query($response,$patient_update);
-        header("location:update.php?patient_id=$id");
-
+        if ($result){
+            setcookie('success','Record Updated Successfuly.',time()+10,'/');
+            header("location:update.php?patient_id=$id");
+        }else{
+            setcookie('error','Something Bad Happend.',time()+10,'/');
+            header("location:update.php?patient_id=$id");
+        }
+        
     }else{
-        echo 'Please Fill All the Fields.';
+        setcookie('error','Please Fill all the fields',time()+10,'/');
+        header("location:update.php?patient_id=$id");
     }
 
     
