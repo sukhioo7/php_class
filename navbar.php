@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class='header'>
         <h3> <span class='logo-img'><img src="img/logo.png" alt=""></span> Doaba Hospital</h3>
         <div class='nav-links'>
@@ -8,8 +9,16 @@
           <a href="patients.php">Patients</a>
         </div>
         <div class="log-sign">
-          <a href="login.php">Login</a>
-          <a href="signup.php">Signup</a>
+          <?php
+            
+            if (isset($_SESSION['emp_id'])){
+          ?>
+            <a class="bg-danger" href="logout.php">Logout</a>
+          <?php  }else{
+          ?>  
+            <a href="login.php">Login</a>
+            <a href="signup.php">Signup</a>
+          <?php }?>
         </div>
 </div>
 <div class="search">

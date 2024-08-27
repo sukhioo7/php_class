@@ -189,9 +189,10 @@ if (isset($_POST['login'])){
             $result = password_verify($user_password,$employee['emp_password']);
 
             if ($result){
-                echo 'Login';
-                // $_SESSION['emp_id'] = employees['emp_id'];
-                // $_SESSION['emp_name'] = employees['emp_name'];
+                session_start();
+                $_SESSION['emp_id'] = $employee['emp_id'];
+                $_SESSION['emp_name'] = $employee['emp_name'];
+                header('location:index.php');
             }else{
                 setcookie('error','Your Email or Password is incorrect.',time()+10,'/');
                 header('location:login.php');
@@ -207,3 +208,4 @@ if (isset($_POST['login'])){
 }
 
 ?>
+
