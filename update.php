@@ -17,7 +17,11 @@
       <div class='patient-form'>
         <h2 class='text-center m-2'>Update Patient</h2>
         <?php
+              if (!isset($_SESSION['emp_id'])){
+                header('location:login.php');
+            }
             if (isset($_GET['patient_id'])){
+              
                 $id = $_GET['patient_id'];
                 
                 $select_patient = "select * from patients where patient_id=$id;";

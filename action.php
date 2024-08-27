@@ -62,6 +62,9 @@ if (isset($_POST['patient_register'])){
 
 <?php
     if (isset($_GET['patient_id'])){
+        if (!isset($_SESSION['emp_id'])){
+            header('location:login.php');
+        }
         $id = $_GET['patient_id'];
         
         $delete_query = "delete from patients where patient_id=$id;";
@@ -82,6 +85,9 @@ if (isset($_POST['patient_register'])){
 <?php
 
 if (isset($_POST['update_patient'])){
+    if (!isset($_SESSION['emp_id'])){
+        header('location:login.php');
+    }
     
     $id = $_POST['id']; 
     $name = $_POST['full_name']; 

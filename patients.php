@@ -20,6 +20,9 @@
         <div class="card-section">
             <ul class="cards">
                 <?php
+                    if (!isset($_SESSION['emp_id'])){
+                        header('location:login.php');
+                    }
                     include('connection.php');
                     if(isset($_POST['search-btn'])){
                         $query = $_POST['search'];
