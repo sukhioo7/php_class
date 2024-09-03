@@ -7,11 +7,18 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function home(){
-        return view('home');
+        $admin_name = 'Sukhdeep Singh';
+
+    
+        $data = compact('admin_name');
+
+        return view('home')->with($data);
     }
 
-    public function contact($name){
-        $data = compact('name');
+    public function contact($name=null){
+        $products = ['Mobile','Watch','Laptop','Mouse','Keyboard'];
+
+        $data = compact('name','products');
         return view('contact')->with($data);
     }
 

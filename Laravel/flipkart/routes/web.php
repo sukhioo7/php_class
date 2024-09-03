@@ -15,6 +15,6 @@ use App\Http\Controllers\MainController;
 */
 
 Route::get('/',[MainController::class,'home']);
-Route::get('/contact/{name}/',[MainController::class,'contact']);
+Route::get('/contact/{name?}/',[MainController::class,'contact']);
 Route::get('/about/{city}/{state?}/',[MainController::class,'about']);
 

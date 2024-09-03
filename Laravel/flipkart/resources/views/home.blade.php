@@ -7,5 +7,7 @@
 </head>
 <body>
     <H1>Welcome to Flipkart</H1>
+    <h2>Admin Details</h2>
+    <p>The name of the admin is : {{$admin_name}}</p>
 </body>
 </html>
