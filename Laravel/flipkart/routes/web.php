@@ -14,7 +14,10 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/',[MainController::class,'home']);
-Route::get('/contact/{name?}/',[MainController::class,'contact']);
+Route::get('/',[MainController::class,'home'])->name('home-page');
+Route::get('/contact/',[MainController::class,'contact'])->name('contact-page');
+Route::post('/add/',[MainController::class,'add_numbers'])->name('add-numbers');
+
+
 Route::get('/about/{city}/{state?}/',[MainController::class,'about']);
 

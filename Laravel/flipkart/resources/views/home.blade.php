@@ -8,9 +8,28 @@
   </head>
 <body>
     @include('navbar') 
-    <H1>Welcome to Flipkart</H1>
-    <h2>Admin Details</h2>
-    <p>The name of the admin is : {{$admin_name}}</p>
+    <H1 class="text-center text-dark m-5 p-3">Lets Add Two numbers</H1>
+    <div class="container">
+      <form action="{{route('add-numbers')}}" method="POST">
+        @csrf
+        <div class="mb-3">
+          <label for="num1" class="form-label">Number 1:</label>
+          <input type="number" class="form-control" id="num1" name="num1" required>
+        </div>
+        <div class="mb-3">
+          <label for="num2" class="form-label">Number 2:</label>
+          <input type="number" class="form-control" id="num2" name="num2" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Add</button>
+      </form>
+    </div>
+    <div class="result">
+      @if (isset($num1) and isset($num2) and isset($result))
+        <h3 class="text-center mt-3 text-secondary">Total of {{$num1}} and {{$num2}} is : {{$result}}</h3>
+      @endif
+    </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
