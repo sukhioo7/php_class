@@ -13,7 +13,7 @@
           <a class="nav-link active" aria-current="page" href="{{route('contact-page')}}">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">About Us</a>
+          <a class="nav-link active" aria-current="page" href="{{route('about')}}">About Us</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

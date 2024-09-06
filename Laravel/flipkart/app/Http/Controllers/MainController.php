@@ -22,8 +22,8 @@ class MainController extends Controller
         return view('contact')->with($data);
     }
 
-    public function about($city,$state=null){
-        echo "<h1>The city is :  $city, and state is : $state</h1>";
+    public function about(){
+        return view('about');
     }
     
     public function add_numbers(Request $request){

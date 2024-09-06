@@ -19,5 +19,5 @@ Route::get('/contact/',[MainController::class,'contact'])->name('contact-page');
 Route::post('/add/',[MainController::class,'add_numbers'])->name('add-numbers');
 
 
-Route::get('/about/{city}/{state?}/',[MainController::class,'about']);
+Route::get('/about/',[MainController::class,'about'])->name('about');
 
