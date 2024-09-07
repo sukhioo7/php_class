@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,7 +19,6 @@ class MainController extends Controller
 
     public function contact(){
         $products = ['Mobile','Watch','Laptop','Mouse','Keyboard'];
-
         $data = compact('products');
         return view('contact')->with($data);
     }
