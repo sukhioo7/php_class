@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('name', length: 250);
             $table->string('City', length: 250);
             $table->integer('age');
-            $table->float('number1');
-            $table->float('number2');
             $table->timestamps();
         });
     }

@@ -16,7 +16,8 @@ use App\Http\Controllers\MainController;
 
 Route::get('/',[MainController::class,'home'])->name('home-page');
 Route::get('/contact/',[MainController::class,'contact'])->name('contact-page');
-Route::post('/add/',[MainController::class,'add_numbers'])->name('add-numbers');
+Route::get('/customers/',[MainController::class,'customers'])->name('customers');
+Route::post('/register/',[MainController::class,'register'])->name('register');
 
 
 Route::get('/about/',[MainController::class,'about'])->name('about');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\CustomerModel;
+
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -19,6 +21,8 @@ class MainController extends Controller
 
     public function contact(){
         $products = ['Mobile','Watch','Laptop','Mouse','Keyboard'];
+
+
         $data = compact('products');
         return view('contact')->with($data);
     }
@@ -27,13 +31,27 @@ class MainController extends Controller
         return view('about');
     }
     
-    public function add_numbers(Request $request){
-        $num1 = $request->input('num1');
-        $num2 = $request->input('num2');
+    public function register(Request $request){
+        $name = $request->input('name');
+        $city = $request->input('city');
+        $age = $request->input('age');
 
-        $result = $num1 + $num2;
+        $customer = new CustomerModel;
+        $customer->name = $name;
+        $customer->city = $city;
+        $customer->age = $age;
+        $customer->save();
 
-        $data = compact('num1','num2','result');
+        $success = 'Registration successful';
+        $data = compact('success');
         return view('home')->with($data);
+    } 
+
+    public function customers(){
+        $customers = CustomerModel::all();
+        $data = compact('customers');
+        return view('customers')->with($data);
     }  
+
+
 }
