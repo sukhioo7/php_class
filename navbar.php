@@ -23,7 +23,9 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button class="btn btn-outline-secondary ms-2">Add New Blog</button>
+      <a href="add_blog.php" class="btn btn-outline-secondary ms-2">Add New Blog</a>
     </div>
   </div>
 </nav>
+
+<!-- github.com/sukhioo7/php_class -->
