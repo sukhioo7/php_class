@@ -11,56 +11,56 @@
     <div class="container mb-5 ">
         <h1 class="text-center text-dark mt-5 mb-3">Add Blog</h1>
         <div class="blog-form border rounded p-5 ">
-        <form class="form-floating">
+        <form action="action.php" method="POST" class="form-floating">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input name="blog_title" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Blog Title</label>
             </div>
             <div class="mb-3">
-                <select class="form-select form-select mb-3" aria-label=".form-select-lg example">
+                <select name="category" class="form-select form-select mb-3" aria-label=".form-select-lg example">
                     <option selected>Select Category</option>
-                    <option value="1">Weight Loss</option>
-                    <option value="2">Weight Gain</option>
-                    <option value="3">Food</option>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                    <option value="Food">Food</option>
                 </select>
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                <textarea name="introduction" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
                 <label for="floatingTextarea2">Introduction</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
+                <input name="sub_heading1" type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
                 <label for="floatingPassword">Sub Heading</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+                <textarea name="content1" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
                 <label for="floatingTextarea2">Content</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
+                <input name="sub_heading2" type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
                 <label for="floatingPassword">Sub Heading</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+                <textarea name="content2" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
                 <label for="floatingTextarea2">Content</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
+                <input name="sub_heading3" type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
                 <label for="floatingPassword">Sub Heading</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+                <textarea name="content3" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
                 <label for="floatingTextarea2">Content</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
+                <input name="sub_heading4" type="text" class="form-control" id="floatingPassword" placeholder="Introduction">
                 <label for="floatingPassword">Sub Heading</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+                <textarea name="content4" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
                 <label for="floatingTextarea2">Content</label>
             </div>
-            <button class="btn btn-dark w-100">Submit</button>
+            <button name="add_blog_btn" class="btn btn-dark w-100">Submit</button>
         </form>
         </div>
     </div>
