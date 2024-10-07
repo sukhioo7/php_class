@@ -20,15 +20,18 @@
 
             if ($result->num_rows>0){
               while ($blog = $result->fetch_assoc()){
+                // print_r($blog);
+                $real_time = strtotime($blog['post_date']);
         ?>
                 <div class="card mb-3">
                   <img src="https://thumbs.dreamstime.com/b/wooden-pathway-lush-green-tropical-jungle-sunlight-serene-nature-walk-concept-wooden-pathway-lush-green-322646384.jpg" 
                   class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title"><?php echo $blog['blog_title'] ?></h5>
+                    <p class="card-text"><?php echo substr($blog['introduction'],0,180) ?>...</p>
+                    <p class="card-text"><small class="text-muted"><?php echo date('l, j M Y',$real_time); ?></small></p>
                   </div>
+                  <button class="btn btn-primary m-2">Read More</button>
                 </div>
         <?php
               }
