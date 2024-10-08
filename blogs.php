@@ -20,11 +20,13 @@
 
             if ($result->num_rows>0){
               while ($blog = $result->fetch_assoc()){
-                // print_r($blog);
+                $random_number = random_int(1,6);
+                $imgage_path = "img/blog$random_number.jpg";
+               
                 $real_time = strtotime($blog['post_date']);
         ?>
                 <div class="card mb-3">
-                  <img src="https://thumbs.dreamstime.com/b/wooden-pathway-lush-green-tropical-jungle-sunlight-serene-nature-walk-concept-wooden-pathway-lush-green-322646384.jpg" 
+                  <img height="350vw" src="<?php echo $imgage_path ?>" 
                   class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title"><?php echo $blog['blog_title'] ?></h5>
@@ -41,7 +43,22 @@
 
       </div>
       <div class="filter-list">
-        bye
+          <h2>Filters</h2>
+          <div class="filter-container">
+            <form class="mt-4">
+              <div class="col-md-4 w-100 mb-2">
+                <label for="inputState" class="form-label">Category</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>Weight Gain</option>
+                  <option>Weight Loss</option>
+                  <option>Health</option>
+                  <option>Food</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
       </div>
     </main>
 

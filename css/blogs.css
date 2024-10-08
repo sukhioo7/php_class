@@ -20,7 +20,7 @@ body{
 }
 .filter-list{
     width: 30%;
-
+    padding: 2em;
     background-color: #ebedee;
 }
 /* width */
@@ -38,4 +38,8 @@ border-radius: 6px;
 ::-webkit-scrollbar-thumb {
 background: #87A2FF; 
 border-radius: 6px;
+}
+.card>img{
+    object-fit: cover;
+    object-position: 0 0px;
 }
