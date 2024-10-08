@@ -33,7 +33,7 @@
                     <p class="card-text"><?php echo substr($blog['introduction'],0,180) ?>...</p>
                     <p class="card-text"><small class="text-muted"><?php echo date('l, j M Y',$real_time); ?></small></p>
                   </div>
-                  <button class="btn btn-primary m-2">Read More</button>
+                  <a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>" class="btn btn-primary m-2">Read More</a>
                 </div>
         <?php
               }
