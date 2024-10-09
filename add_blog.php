@@ -22,9 +22,9 @@
                     <option value="Weight Loss">Weight Loss</option>
                     <option value="Weight Gain">Weight Gain</option>
                     <option value="Food">Food</option>
-                    <option value="Food">Health</option>
-                    <option value="Food">Muscle Gain</option>
-                    <option value="Food">Yoga</option>
+                    <option value="Health">Health</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Yoga">Yoga</option>
                 </select>
             </div>
             <div class="form-floating mb-3">

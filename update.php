@@ -36,13 +36,73 @@
             </div>
             <div class="mb-3">
                 <select name="category" class="form-select form-select mb-3" aria-label=".form-select-lg example">
-                    <option selected>Select Category</option>
-                    <option value="Weight Loss">Weight Loss</option>
-                    <option value="Weight Gain">Weight Gain</option>
-                    <option value="Food">Food</option>
-                    <option value="Food">Health</option>
-                    <option value="Food">Muscle Gain</option>
-                    <option value="Food">Yoga</option>
+                    <option >Select Category</option>
+                    <?php if ($blog['category'] == 'Weight Loss'){
+                    ?>
+                        <option selected value="Weight Loss">Weight Loss</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option value="Food">Food</option>
+                        <option value="Health">Health</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
+                    <?php if ($blog['category'] == 'Weight Gain'){
+                    ?>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option selected value="Weight Gain">Weight Gain</option>
+                        <option value="Food">Food</option>
+                        <option value="Health">Health</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
+                    <?php if ($blog['category'] == 'Food'){
+                    ?>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option selected value="Food">Food</option>
+                        <option value="Health">Health</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
+                    <?php if ($blog['category'] == 'Health'){
+                    ?>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option value="Food">Food</option>
+                        <option selected value="Health">Health</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
+                    <?php if ($blog['category'] == 'Muscle Gain'){
+                    ?>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option value="Food">Food</option>
+                        <option value="Health">Health</option>
+                        <option selected value="Muscle Gain">Muscle Gain</option>
+                        <option value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
+                    <?php if ($blog['category'] == 'Yoga'){
+                    ?>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option value="Food">Food</option>
+                        <option value="Health">Health</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option selected value="Yoga">Yoga</option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-floating mb-3">
