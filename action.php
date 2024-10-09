@@ -40,3 +40,24 @@ if (isset($_POST['add_blog_btn'])){
 
 
 ?>
+
+<!-- ++++++++++++++++++ Delete BLOG +++++++++++++++++ -->
+
+<?php 
+
+if (isset($_GET['delete_id'])){
+    $id = $_GET['delete_id'];
+
+    // $delete_query = "delete from blogs where blog_id = $id";
+
+    // $result = $conn->query($delete_query);
+    $result = True;
+    if ($result){
+        // echo "Blog Deleted Successfuly.";
+        header('location:blogs.php');
+    }else{
+        echo "Error: ". $conn->error;
+    }
+}
+
+?>

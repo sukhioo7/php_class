@@ -50,10 +50,12 @@
                 <label for="inputState" class="form-label">Category</label>
                 <select id="inputState" class="form-select">
                   <option selected>Choose...</option>
-                  <option>Weight Gain</option>
-                  <option>Weight Loss</option>
-                  <option>Health</option>
-                  <option>Food</option>
+                  <option value="Weight Loss">Weight Loss</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                    <option value="Food">Food</option>
+                    <option value="Food">Health</option>
+                    <option value="Food">Muscle Gain</option>
+                    <option value="Food">Yoga</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
