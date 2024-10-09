@@ -42,7 +42,7 @@
             <H1><?php echo $blog['blog_title'] ?></H1>
         </div>
         <div class="container edit-btn">
-            <a class="btn btn-success" href="">Edit</a>
+            <a class="btn btn-success" href="update.php?update_id=<?php echo $blog['blog_id'] ?>">Edit</a>
             <a class="btn btn-danger" href="action.php?delete_id=<?php echo $blog['blog_id'] ?>">Delete</a>
         </div>
         <div class="blog-content mt-5 mb-5 container">
