@@ -14,7 +14,14 @@
     <main class="main-div">
       <div class="blog-list">
         <?php
-            $select_blogs = "select * from blogs";
+            if (isset($_POST['search_btn'])){
+              $search = $_POST['user_search'];
+              $select_blogs = "select * from blogs where blog_title like '%$search%' or  introduction like '%$search%' or
+              sub_heading1 like '%$search%' or sub_heading2 like '%$search%' or sub_heading3 like '%$search%' or
+              sub_heading4 like '%$search%'";
+            }else{
+              $select_blogs = "select * from blogs";
+            }
 
             $result = $conn->query($select_blogs);
 

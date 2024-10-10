@@ -30,6 +30,7 @@
 
         ?>
         <form action="action.php" method="POST" class="form-floating">
+            <input type="hidden" name="blog_id" value="<?php echo $blog['blog_id']; ?>">
             <div class="form-floating mb-3">
                 <input name="blog_title" type="text" value="<?php echo $blog['blog_title'] ?>" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Blog Title</label>

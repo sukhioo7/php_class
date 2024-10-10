@@ -19,9 +19,9 @@
           <a class="nav-link" href="about.php">About Us</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" method="post" action="blogs.php" role="search">
+        <input class="form-control me-2" name="user_search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" name="search_btn" type="submit">Search</button>
       </form>
       <a href="add_blog.php" class="btn btn-outline-secondary ms-2">Add New Blog</a>
     </div>
