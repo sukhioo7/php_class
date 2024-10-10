@@ -48,10 +48,10 @@ if (isset($_POST['add_blog_btn'])){
 if (isset($_GET['delete_id'])){
     $id = $_GET['delete_id'];
 
-    // $delete_query = "delete from blogs where blog_id = $id";
+    $delete_query = "delete from blogs where blog_id = $id";
 
-    // $result = $conn->query($delete_query);
-    $result = True;
+    $result = $conn->query($delete_query);
+    // $result = True;
     if ($result){
         // echo "Blog Deleted Successfuly.";
         header('location:blogs.php');

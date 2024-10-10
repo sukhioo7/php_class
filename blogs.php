@@ -58,8 +58,21 @@
                     <option value="Food">Yoga</option>
                 </select>
               </div>
+              <div class="col-md-4 w-100 mt-4 mb-3">
+                <div class="row">
+                  <div class="col">
+                    <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
+                    <label class="btn" for="option5">Ascending</label>  
+                  </div>
+                  <div class="col">
+                    <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+                    <label class="btn" for="option6">Descending</label>
+                  </div>
+                </div>
+              </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            
           </div>
       </div>
     </main>
