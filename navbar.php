@@ -24,6 +24,8 @@
         <button class="btn btn-outline-success" name="search_btn" type="submit">Search</button>
       </form>
       <a href="add_blog.php" class="btn btn-outline-secondary ms-2">Add New Blog</a>
+      <a href="login.php" class="btn btn-outline-primary ms-2">Login</a>
+      <a href="signup.php" class="btn btn-primary ms-2">Signup</a>
     </div>
   </div>
 </nav>
