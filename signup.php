@@ -14,7 +14,7 @@
     <main>
         <h1 class="text-center text-dark mt-5 m-3">SIGN UP</h1>
         <div class="container w-50">
-            <form class="rounded p-4 mb-5 border w-80" action="action.php" method="post">
+            <form class="rounded p-4 mb-5 border w-80" enctype="multipart/form-data" action="action.php" method="post">
                 <div class="form-floating mb-3">
                     <div class="row g-2">
                         <div class="col-md">
@@ -54,7 +54,7 @@
                 <div class="form-floating mb-3">
                     <div class="input-group mb-3">
                         <label class="input-group-text bg-dark text-white" for="inputGroupFile01">Profile Photo</label>
-                        <input type="file" class="form-control" id="inputGroupFile01">
+                        <input name="profile_photo" type="file" class="form-control" id="inputGroupFile01">
                     </div>
                 </div>
                 <div class="form-floating mb-3">
