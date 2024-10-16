@@ -28,13 +28,17 @@ if (isset($_POST['add_blog_btn'])){
         $result = $conn->query($insert_blog_query);
 
         if ($result){
-            echo "Blog Added Successfully.";
+            setcookie('success',"Blog Added Successfully.",time()+8,'/');
+            header('location:add_blog.php');
         }else{
-            echo "Error: ". $conn->error;
+            setcookie('error',$conn->error,time()+8,'/');
+            header('location:add_blog.php');
+            // echo "Error: ". $conn->error;
         }
-
+        
     }else{
-        echo "Please Fill All The Fields.";
+        setcookie('error',"Please Fill All The Fields.",time()+8,'/');
+        header('location:add_blog.php');
     }
 }
 

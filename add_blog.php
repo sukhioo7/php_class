@@ -11,6 +11,23 @@
     <div class="container mb-5 ">
         <h1 class="text-center text-dark mt-5 mb-3">Add Blog</h1>
         <div class="blog-form border rounded p-5 ">
+        <?php 
+            if (isset($_COOKIE['error'])){
+        ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error : </strong><?php echo $_COOKIE['error'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        <?php  } ?>
+        
+        <?php 
+            if (isset($_COOKIE['success'])){
+        ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success : </strong><?php echo $_COOKIE['success'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        <?php  } ?>
         <form action="action.php" method="POST" class="form-floating">
             <div class="form-floating mb-3">
                 <input name="blog_title" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
