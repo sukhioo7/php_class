@@ -108,14 +108,18 @@ if (isset($_POST['update_blog_btn'])){
 <?php
 
 if (isset($_POST['signup'])){
+
+    $target_folder = 'profile_photos/';
+
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $country = $_POST['country'];
     $city = $_POST['city'];
-    $profile_photo = $_POST['profile_photo'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm-password'];
+    
+    $profile_photo = $_FILES['profile_photo'];
 
     if (!empty($first_name) and !empty($last_name) and !empty($email) and !empty($country) 
     and !empty($city) and !empty($password) and !empty($confirm_password)){
@@ -123,8 +127,14 @@ if (isset($_POST['signup'])){
         if ($password === $confirm_password){
                 $encrypted_password = password_hash($password, PASSWORD_ARGON2I);
 
-                $insert_user_query = "insert into users (first_name, last_name, email, country, city, password) values 
-                ('$first_name', '$last_name', '$email', '$country', '$city', '$encrypted_password')";
+                if ($profile_photo['name']){
+                    $image_name = $profile_photo['name'];
+                    $target_file = $target_folder. $image_name;
+                    move_uploaded_file($profile_photo['tmp_name'], $target_file);
+                }
+
+                $insert_user_query = "insert into users (first_name, last_name, email, country, city, profile_image 
+                , password) values ('$first_name', '$last_name', '$email', '$country', '$city', '$target_file', '$encrypted_password')";
         
                 $result = $conn->query($insert_user_query);
                 
