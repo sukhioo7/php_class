@@ -152,9 +152,12 @@ if (isset($_POST['signup'])){
                     setcookie('error',"This Email is already exists.",time()+8,'/');
                     header('location:signup.php');
                 }else{
-                    setcookie('error',"Error: ". $conn->error,time()+8,'/');
+                    setcookie('error',$conn->error,time()+8,'/');
                     header('location:signup.php');
                 }
+        }else{
+            setcookie('error',"Passwords Do Not Match.",time()+8,'/');
+            header('location:signup.php');
         }
     }else{
         setcookie('error',"Please Fill All The Fields.",time()+8,'/');
@@ -162,5 +165,50 @@ if (isset($_POST['signup'])){
     }
 }
 
+
+?>
+
+<!-- ++++++++++++++++++ Login User +++++++++++++++++ -->
+
+<?php
+
+if (isset($_POST['login'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    if (!empty($email) and!empty($password)){
+
+        $select_user = "select user_id,first_name,password,profile_image from users where email='$email'";
+
+        $raw_user = $conn->query($select_user);
+
+        if ($raw_user->num_rows > 0){
+            $user = $raw_user->fetch_assoc();
+
+            $user_password = $user['password'];
+            
+            $is_matched = password_verify($password,$user_password);
+
+            if ($is_matched){
+                // echo "Login successful.";
+                session_start();
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['profile_photo'] = $user['profile_image'];
+                $_SESSION['first_name'] = $user['first_name'];
+                header('location:index.php');
+            }else{
+                setcookie('error',"Invalid Email Or Password.",time()+8,'/');
+                header('location:login.php');
+            }
+        }else{
+            setcookie('error',"Invalid Email Or Password.",time()+8,'/');
+            header('location:login.php');
+        }
+
+    }else{
+        setcookie('error',"Please Fill All The Fields.",time()+8,'/');
+        header('location:login.php');
+    }
+}
 
 ?>

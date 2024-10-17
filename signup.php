@@ -14,6 +14,23 @@
     <main>
         <h1 class="text-center text-dark mt-5 m-3">SIGN UP</h1>
         <div class="container w-50">
+            <?php 
+                if (isset($_COOKIE['error'])){
+            ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error : </strong><?php echo $_COOKIE['error'] ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+            <?php  } ?>
+            
+            <?php 
+                if (isset($_COOKIE['success'])){
+            ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success : </strong><?php echo $_COOKIE['success'] ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+            <?php  } ?>
             <form class="rounded p-4 mb-5 border w-80" enctype="multipart/form-data" action="action.php" method="post">
                 <div class="form-floating mb-3">
                     <div class="row g-2">
