@@ -35,7 +35,7 @@
                     <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div class="form-floating ">
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating">
@@ -51,6 +51,7 @@
                         </div>
                     </div>
                 </div>
+                <label for="floatingInputGrid" class="mt-1 mb-1 text-end w-100">(Optional)</label>
                 <div class="form-floating mb-3">
                     <div class="input-group mb-3">
                         <label class="input-group-text bg-dark text-white" for="inputGroupFile01">Profile Photo</label>

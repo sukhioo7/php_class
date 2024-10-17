@@ -135,6 +135,9 @@ if (isset($_POST['signup'])){
                     $image_name = $profile_photo['name'];
                     $target_file = $target_folder. $image_name;
                     move_uploaded_file($profile_photo['tmp_name'], $target_file);
+                }else{
+                    $image_name = 'default.png';
+                    $target_file = $target_folder. $image_name;
                 }
 
                 $insert_user_query = "insert into users (first_name, last_name, email, country, city, profile_image 
@@ -143,15 +146,19 @@ if (isset($_POST['signup'])){
                 $result = $conn->query($insert_user_query);
                 
                 if ($result){
-                    echo "User Added Successfully.";
+                    setcookie('success',"User Added Successfully.",time()+8,'/');
+                    header('location:signup.php');
+                }else if  (str_contains($conn->error,'email')){
+                    setcookie('error',"This Email is already exists.",time()+8,'/');
+                    header('location:signup.php');
                 }else{
-                    if (str_contains($conn->error,'email')){
-                        echo "This Email is already exists.";
-                    }else{
-                        echo "Error: ". $conn->error;
-                    }
+                    setcookie('error',"Error: ". $conn->error,time()+8,'/');
+                    header('location:signup.php');
                 }
         }
+    }else{
+        setcookie('error',"Please Fill All The Fields.",time()+8,'/');
+        header('location:signup.php');
     }
 }
 
