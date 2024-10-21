@@ -13,6 +13,7 @@
       }
     </style>
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navbar.css">
   </head>
   <body>
     <?php include('navbar.php') ?>
