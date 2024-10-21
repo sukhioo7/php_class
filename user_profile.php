@@ -1,11 +1,13 @@
 <!doctype html>
+<?php include('connection.php'); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/user_profile.css">
+    <link rel="stylesheet" href="css/navbar.css">
   </head>
   <body>
   <div class="container">
@@ -13,16 +15,27 @@
         <div class="mb-2">
             <?php include('navbar.php') ?>
         </div>
+        <?php if (isset($_SESSION['user_id'])){
 
+          $user_id = $_SESSION['user_id'];
+          $select_user = "select * from users where user_id = $user_id";
+          
+          $raw_data = $conn->query($select_user);
+
+          $user = $raw_data->fetch_assoc();
+
+        }else{ 
+          header('location: login.php'); 
+        }?>
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="<?php echo $user['profile_image']; ?>" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>John Doe</h4>
+                      <h4><?php echo $user['first_name'].' '.$user['last_name']; ?></h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                     </div>
@@ -42,7 +55,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      <?php echo $user['first_name'].' '.$user['last_name']; ?>
                     </div>
                   </div>
                   <hr>
@@ -51,7 +64,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
+                    <?php echo $user['email']; ?>
                     </div>
                   </div>
                   <hr>
@@ -60,7 +73,7 @@
                       <h6 class="mb-0">Country</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      India
+                      <?php echo $user['country']; ?>
                     </div>
                   </div>
                   <hr>
@@ -69,7 +82,7 @@
                       <h6 class="mb-0">City</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Ropar
+                      <?php echo $user['city']; ?>
                     </div>
                   </div>
                   <hr>
