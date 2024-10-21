@@ -8,6 +8,9 @@
   </head>
   <body>
     <?php include('navbar.php') ?>
+    <?php if (!isset($_SESSION['user_id'])){
+        header('location:login.php');
+    } ?>
     <div class="container mb-5 ">
         <h1 class="text-center text-dark mt-5 mb-3">Add Blog</h1>
         <div class="blog-form border rounded p-5 ">

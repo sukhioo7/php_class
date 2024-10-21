@@ -4,6 +4,9 @@
 <?php
 
 if (isset($_POST['add_blog_btn'])){
+   if (!isset($_SESSION['user_id'])){
+        header('location:login.php');
+    }
     $blog_title = $_POST['blog_title'];
     $introduction = $_POST['introduction'];
     $category  = $_POST['category'];
@@ -50,6 +53,9 @@ if (isset($_POST['add_blog_btn'])){
 <?php 
 
 if (isset($_GET['delete_id'])){
+    if (!isset($_SESSION['user_id'])){
+        header('location:login.php');
+    }
     $id = $_GET['delete_id'];
 
     $delete_query = "delete from blogs where blog_id = $id";
@@ -70,6 +76,9 @@ if (isset($_GET['delete_id'])){
 <?php
 
 if (isset($_POST['update_blog_btn'])){
+    if (!isset($_SESSION['user_id'])){
+        header('location:login.php');
+    }
     $blog_id = $_POST['blog_id'];
     $blog_title = $_POST['blog_title'];
     $introduction = $_POST['introduction'];

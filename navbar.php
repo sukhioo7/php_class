@@ -24,15 +24,18 @@
         <input class="form-control me-2" name="user_search" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" name="search_btn" type="submit">Search</button>
       </form>
-      <a href="add_blog.php" class="btn btn-outline-secondary ms-2">Add New Blog</a>
-      <a href="login.php" class="btn btn-outline-primary ms-2">Login</a>
-      <a href="signup.php" class="btn btn-primary ms-2">Signup</a>
-      <div class="bg-danger rounded ps-3 pe-1 pt-1 pb-1 ms-2">
-        <span href="#">
-          <img src="<?php echo $_SESSION['profile_photo'] ?>" alt="Logo" width="30" height="24" class="d-inline-block align-text-top bg-white" style="border-radius: 50%;">
-          <a href="logout.php" class="btn ms-4 bg-white text-black ms-2">Logout</a>
-        </span>
-      </div>
+      <?php if (isset($_SESSION['user_id'])){ ?>
+        <a href="add_blog.php" class="btn btn-outline-secondary ms-2">Add New Blog</a>
+        <div class="bg-danger rounded ps-3 pe-1 pt-1 pb-1 ms-2">
+          <span href="#">
+            <img src="<?php echo $_SESSION['profile_photo'] ?>" alt="Logo" width="40" height="34" class="d-inline-block align-text-top bg-white" style="border-radius: 50%;">
+            <a href="logout.php" class="btn ms-4 bg-white text-black ms-2">Logout</a>
+          </span>
+        </div>
+      <?php }else { ?>
+        <a href="login.php" class="btn btn-outline-primary ms-2">Login</a>
+        <a href="signup.php" class="btn btn-primary ms-2">Signup</a>
+      <?php } ?>
     </div>
   </div>
 </nav>
