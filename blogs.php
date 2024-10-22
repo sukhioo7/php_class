@@ -21,13 +21,20 @@
               sub_heading1 like '%$search%' or sub_heading2 like '%$search%' or sub_heading3 like '%$search%' or
               sub_heading4 like '%$search%'";
             }else{
-              $select_blogs = "select * from blogs";
+              $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+              b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+              b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+              u.profile_image  from blogs as b inner join users as u on
+              b.published_by = u.user_id";
             }
 
             $result = $conn->query($select_blogs);
 
             if ($result->num_rows>0){
               while ($blog = $result->fetch_assoc()){
+                // echo "<pre>";
+                // print_r($blog);
+                // echo "</pre>";
                 $random_number = random_int(1,6);
                 $imgage_path = "img/blog$random_number.jpg";
                
@@ -38,7 +45,16 @@
             <div class="blog-header">
               <div style="background: url('<?php echo $imgage_path ?>');  background-size: cover;"  class="blog-cover">
                 <div class="blog-author">
-                  <h3>Russ Beye</h3>
+                  <h3 style='background: url("<?php echo $blog['profile_image']; ?>"); 
+                  background-size: cover; 
+                  border-radius: 50%;
+                  content: " "; 
+                  display: inline-block;
+                  height: 32px;
+                  margin-right: .5rem;
+                  position: relative;
+                  top: 8px;
+                  width: 32px;'><span class="ms-5 mt-5 w-100"><?php echo $blog['first_name'].' '.$blog['last_name']; ?></span></h3>
                 </div>
               </div>
             </div>
