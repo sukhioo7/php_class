@@ -33,16 +33,37 @@
                
                 $real_time = strtotime($blog['post_date']);
         ?>
-                <div class="card mb-3">
-                  <img height="350vw" src="<?php echo $imgage_path ?>" 
-                  class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"><?php echo $blog['blog_title'] ?></h5>
-                    <p class="card-text"><?php echo substr($blog['introduction'],0,180) ?>...</p>
-                    <p class="card-text"><small class="text-muted"><?php echo date('l, j M Y',$real_time); ?></small></p>
-                  </div>
-                  <a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>" class="btn btn-primary m-2">Read More</a>
+          <div class="blog-container">
+            
+            <div class="blog-header">
+              <div style="background: url('<?php echo $imgage_path ?>');  background-size: cover;"  class="blog-cover">
+                <div class="blog-author">
+                  <h3>Russ Beye</h3>
                 </div>
+              </div>
+            </div>
+
+            <div class="blog-body">
+              <div class="blog-title">
+                <h1><a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>"><?php echo $blog['blog_title'] ?></a></h1>
+              </div>
+              <div class="blog-summary">
+                <p><?php echo substr($blog['introduction'],0,180) ?>...</p>
+              </div>
+              <div class="blog-tags">
+                <ul>
+                  <li class="border text-secondary p-1 rounded"><?php echo $blog['category'] ?></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="blog-footer">
+              <ul>
+                <li class="published-date"><?php echo date('l, j M Y',$real_time); ?></li>
+              </ul>
+            </div>
+
+          </div>
         <?php
               }
             }
