@@ -18,11 +18,16 @@
         <?php if (isset($_SESSION['user_id'])){
 
           $user_id = $_SESSION['user_id'];
-          $select_user = "select * from users where user_id = $user_id";
+          $select_user =  "select u.first_name, u.last_name,
+          u.profile_image, u.city, u.country, u.email, u.user_id, count(b.blog_id) as num_blogs  from blogs as b inner join users as u on
+          b.published_by = u.user_id where u.user_id =$user_id";
           
           $raw_data = $conn->query($select_user);
 
           $user = $raw_data->fetch_assoc();
+          echo "<pre>";
+          print_r($user);
+          echo "</pre>";
 
         }else{ 
           header('location: login.php'); 
@@ -91,7 +96,7 @@
                       <h6 class="mb-0">Number Blogs</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      12
+                      <?php echo $user['num_blogs']; ?>
                     </div>
                   </div>
                 </div>
