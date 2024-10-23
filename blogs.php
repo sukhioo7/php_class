@@ -40,45 +40,19 @@
                
                 $real_time = strtotime($blog['post_date']);
         ?>
-          <div class="blog-container">
-            
-            <div class="blog-header">
-              <div style="background: url('<?php echo $imgage_path ?>');  background-size: cover;"  class="blog-cover">
-                <div class="blog-author">
-                  <h3 style='background: url("<?php echo $blog['profile_image']; ?>"); 
-                  background-size: cover; 
-                  border-radius: 50%;
-                  content: " "; 
-                  display: inline-block;
-                  height: 32px;
-                  margin-right: .5rem;
-                  position: relative;
-                  top: 8px;
-                  width: 32px;'><span class="ms-5 mt-5 w-100"><?php echo $blog['first_name'].' '.$blog['last_name']; ?></span></h3>
-                </div>
-              </div>
+          <div class="card">
+            <div class="thumbnail"><img class="left" src="<?php echo $imgage_path ?>"/></div>
+            <div class="right">
+              <h1><a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>"><?php echo $blog['blog_title'] ?></a></h1>
+              <span class="author"><?php echo $blog['category'] ?></span>
+              <div class="separator"></div>
+              <p><?php echo substr($blog['introduction'],0,180) ?>...</p>
             </div>
-
-            <div class="blog-body">
-              <div class="blog-title">
-                <h1><a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>"><?php echo $blog['blog_title'] ?></a></h1>
-              </div>
-              <div class="blog-summary">
-                <p><?php echo substr($blog['introduction'],0,180) ?>...</p>
-              </div>
-              <div class="blog-tags">
-                <ul>
-                  <li class="border text-secondary p-1 rounded"><?php echo $blog['category'] ?></li>
-                </ul>
-              </div>
+            <div>
+              <h5><?php echo date('j',$real_time); ?></h5>
+              <h6><?php echo date('M Y',$real_time); ?></h6>
             </div>
-            
-            <div class="blog-footer">
-              <ul>
-                <li class="published-date"><?php echo date('l, j M Y',$real_time); ?></li>
-              </ul>
-            </div>
-
+            <div class="fab"><img src="<?php echo $blog['profile_image']; ?>" alt=""><span><?php echo $blog['first_name'].' '.$blog['last_name']; ?></span></div>
           </div>
         <?php
               }
@@ -88,11 +62,23 @@
 
       </div>
       <div class="filter-list">
-          <h2>Filters</h2>
+          <h1>Filters</h1>
           <div class="filter-container">
             <form class="mt-4">
               <div class="col-md-4 w-100 mb-2">
                 <label for="inputState" class="form-label">Category</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option value="Weight Loss">Weight Loss</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                    <option value="Food">Food</option>
+                    <option value="Food">Health</option>
+                    <option value="Food">Muscle Gain</option>
+                    <option value="Food">Yoga</option>
+                </select>
+              </div>
+              <div class="col-md-4 w-100 mb-2">
+                <label for="inputState" class="form-label">Select By Publisher</label>
                 <select id="inputState" class="form-select">
                   <option selected>Choose...</option>
                   <option value="Weight Loss">Weight Loss</option>
@@ -115,7 +101,7 @@
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary w-100">Apply</button>
             </form>
             
           </div>
