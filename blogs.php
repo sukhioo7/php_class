@@ -24,7 +24,7 @@
               $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
               b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
               b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
-              u.profile_image  from blogs as b inner join users as u on
+              u.profile_image, u.user_id  from blogs as b inner join users as u on
               b.published_by = u.user_id";
             }
 
@@ -52,7 +52,29 @@
               <h5><?php echo date('j',$real_time); ?></h5>
               <h6><?php echo date('M Y',$real_time); ?></h6>
             </div>
-            <div class="fab"><img src="<?php echo $blog['profile_image']; ?>" alt=""><span><?php echo $blog['first_name'].' '.$blog['last_name']; ?></span></div>
+            <div class="fab"
+                      <?php
+                      if (isset($_SESSION['user_id'])){
+                        if ($_SESSION['user_id'] == $blog['user_id']){
+                          echo 'style="background-color: #629584;"';
+                        }
+                      }
+                      ?>
+                      ><img src="<?php echo $blog['profile_image']; ?>" alt="">
+              <span>
+              <?php 
+                if (isset($_SESSION['user_id'])){
+                  if ($_SESSION['user_id'] == $blog['user_id']){
+                    echo 'Published By You';
+                  }else{
+                    echo $blog['first_name'].' '.$blog['last_name'];
+                  }
+                }else{
+                  echo $blog['first_name'].' '.$blog['last_name'];
+                }
+              ?>
+              </span>
+            </div>
           </div>
         <?php
               }
