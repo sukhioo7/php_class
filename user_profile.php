@@ -19,15 +19,16 @@
 
           $user_id = $_SESSION['user_id'];
           $select_user =  "select u.first_name, u.last_name,
-          u.profile_image, u.city, u.country, u.email, u.user_id, count(b.blog_id) as num_blogs  from blogs as b inner join users as u on
+          u.profile_image, u.city, u.country, u.email, u.user_id, count(b.blog_id) 
+          as num_blogs  from blogs as b inner join users as u on
           b.published_by = u.user_id where u.user_id =$user_id";
           
           $raw_data = $conn->query($select_user);
 
           $user = $raw_data->fetch_assoc();
-          echo "<pre>";
-          print_r($user);
-          echo "</pre>";
+          // echo "<pre>";
+          // print_r($user);
+          // echo "</pre>";
 
         }else{ 
           header('location: login.php'); 
@@ -105,16 +106,36 @@
                 <h2>Your Blogs</h2>
               </div>
               <div class="row p-2 gutters-sm">
-                <div class="card mb-3 mt-3">
-                    <img height="350vw" src="img/blog1.jpg"
-                    class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Hello</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex placeat nihil dolorem voluptates ullam iste excepturi. Quos architecto numquam accusamus, vitae, aliquid excepturi, veniam hic dolores enim optio cum ipsa....</p>
-                        <p class="card-text"><small class="text-muted">Friday, Mar 2 2024</small></p>
-                    </div>
-                    <a href="blog_view.php" class="btn btn-primary m-2">Read More</a>
-                </div>
+                <?php
+                    $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+                  b.content1, b.content2, b.content3, b.content4, b.post_date from blogs as b inner join users as u on
+                  b.published_by = u.user_id where b.published_by=$user_id";
+
+                    $result = $conn->query($select_blogs);
+
+                    if ($result->num_rows>0){
+                      while ($blog = $result->fetch_assoc()){
+                        $random_number = random_int(1,6);
+                        $imgage_path = "img/blog$random_number.jpg";
+                      
+                        $real_time = strtotime($blog['post_date']);
+                ?>
+                        <div class="card mb-3">
+                          <img height="350vw" src="<?php echo $imgage_path ?>" 
+                          class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><?php echo $blog['blog_title'] ?></h5>
+                            <p class="card-text"><?php echo substr($blog['introduction'],0,180) ?>...</p>
+                            <p class="card-text"><small class="text-muted"><?php echo date('l, j M Y',$real_time); ?></small></p>
+                          </div>
+                          <a href="blog_view.php?blog_id=<?php echo $blog['blog_id'] ?>" class="btn btn-primary m-2">Read More</a>
+                        </div>
+                <?php
+                      }
+                    }
+
+                ?>
               </div>
 
 
