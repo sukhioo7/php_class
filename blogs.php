@@ -17,9 +17,54 @@
         <?php
             if (isset($_POST['search_btn'])){
               $search = $_POST['user_search'];
-              $select_blogs = "select * from blogs where blog_title like '%$search%' or  introduction like '%$search%' or
+              $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+              b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+              b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+              u.profile_image, u.user_id  from blogs as b inner join users as u on
+              b.published_by = u.user_id where blog_title like '%$search%' or  introduction like '%$search%' or
               sub_heading1 like '%$search%' or sub_heading2 like '%$search%' or sub_heading3 like '%$search%' or
               sub_heading4 like '%$search%'";
+            }else if (isset($_POST['filter-btn'])){
+              $category = $_POST['category'];
+              $publisher_id = $_POST['publisher-id'];
+              $order = $_POST['order'];
+
+              // echo "<pre>";
+              // print_r($_POST);
+              // echo "</pre>";
+              if (!empty($category)){
+                if (!empty($publisher_id)){
+                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+                  u.profile_image, u.user_id  from blogs as b inner join users as u on
+                  b.published_by = u.user_id where b.category='$category' and b.published_by=$publisher_id 
+                  order by b.post_date $order"; 
+                }else{
+                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+                  u.profile_image, u.user_id  from blogs as b inner join users as u on
+                  b.published_by = u.user_id where b.category='$category' 
+                  order by b.post_date $order"; 
+                }
+              }else{
+                if (!empty($publisher_id)){
+                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+                  u.profile_image, u.user_id  from blogs as b inner join users as u on
+                  b.published_by = u.user_id where b.published_by=$publisher_id 
+                  order by b.post_date $order"; 
+                }else{
+                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+                  u.profile_image, u.user_id  from blogs as b inner join users as u on
+                  b.published_by = u.user_id order by b.post_date $order"; 
+                }
+              }
+            
             }else{
               $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
               b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
@@ -28,6 +73,7 @@
               b.published_by = u.user_id";
             }
 
+  
             $result = $conn->query($select_blogs);
 
             if ($result->num_rows>0){
@@ -86,44 +132,51 @@
       <div class="filter-list">
           <h1>Filters</h1>
           <div class="filter-container">
-            <form class="mt-4">
+            <form action="blogs.php" method="post" class="mt-4">
               <div class="col-md-4 w-100 mb-2">
                 <label for="inputState" class="form-label">Category</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
+                <select name="category" id="inputState" class="form-select">
+                  <option value="" selected>Choose...</option>
                   <option value="Weight Loss">Weight Loss</option>
                     <option value="Weight Gain">Weight Gain</option>
                     <option value="Food">Food</option>
-                    <option value="Food">Health</option>
-                    <option value="Food">Muscle Gain</option>
-                    <option value="Food">Yoga</option>
+                    <option value="Health">Health</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Yoga">Yoga</option>
                 </select>
               </div>
               <div class="col-md-4 w-100 mb-2">
                 <label for="inputState" class="form-label">Select By Publisher</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option value="Weight Loss">Weight Loss</option>
-                    <option value="Weight Gain">Weight Gain</option>
-                    <option value="Food">Food</option>
-                    <option value="Food">Health</option>
-                    <option value="Food">Muscle Gain</option>
-                    <option value="Food">Yoga</option>
+                <select name="publisher-id" id="inputState" class="form-select">
+                  <option value="" selected>Choose...</option>
+                  <?php
+                      $select_users = "select user_id,first_name,last_name from users;";
+
+                      $result = $conn->query($select_users);
+                      if ($result->num_rows>0){
+                        while ($user = $result->fetch_assoc()){
+                          $id = $user['user_id'];
+                          $first_name = $user['first_name'];
+                          $last_name = $user['last_name'];
+                          echo "<option value='$id'>$first_name $last_name</option>";
+                        }
+                      }
+                  ?>
                 </select>
               </div>
               <div class="col-md-4 w-100 mt-4 mb-3">
                 <div class="row">
                   <div class="col">
-                    <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="order" value="asc" id="option5" autocomplete="off" checked>
                     <label class="btn" for="option5">Ascending</label>  
                   </div>
                   <div class="col">
-                    <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+                    <input type="radio" class="btn-check" name="order" value="desc" id="option6" autocomplete="off">
                     <label class="btn" for="option6">Descending</label>
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Apply</button>
+              <button type="submit" name="filter-btn" class="btn btn-primary w-100">Apply</button>
             </form>
             
           </div>
