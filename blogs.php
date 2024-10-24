@@ -29,42 +29,13 @@
               $publisher_id = $_POST['publisher-id'];
               $order = $_POST['order'];
 
-              // echo "<pre>";
-              // print_r($_POST);
-              // echo "</pre>";
-              if (!empty($category)){
-                if (!empty($publisher_id)){
-                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
-                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
-                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
-                  u.profile_image, u.user_id  from blogs as b inner join users as u on
-                  b.published_by = u.user_id where b.category='$category' and b.published_by=$publisher_id 
-                  order by b.post_date $order"; 
-                }else{
-                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
-                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
-                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
-                  u.profile_image, u.user_id  from blogs as b inner join users as u on
-                  b.published_by = u.user_id where b.category='$category' 
-                  order by b.post_date $order"; 
-                }
-              }else{
-                if (!empty($publisher_id)){
-                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
-                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
-                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
-                  u.profile_image, u.user_id  from blogs as b inner join users as u on
-                  b.published_by = u.user_id where b.published_by=$publisher_id 
-                  order by b.post_date $order"; 
-                }else{
-                  $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
-                  b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
-                  b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
-                  u.profile_image, u.user_id  from blogs as b inner join users as u on
-                  b.published_by = u.user_id order by b.post_date $order"; 
-                }
-              }
-            
+              $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
+              b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
+              b.content1, b.content2, b.content3, b.content4, b.post_date, u.first_name, u.last_name,
+              u.profile_image, u.user_id  from blogs as b inner join users as u on
+              b.published_by = u.user_id where b.category like '%$category%' and b.published_by like '%$publisher_id%' 
+              order by b.post_date $order"; 
+                
             }else{
               $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
               b.sub_heading1, b.sub_heading2, b.sub_heading3, b.sub_heading4, 
