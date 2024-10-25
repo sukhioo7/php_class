@@ -65,6 +65,31 @@
             <h3><?php echo $blog['sub_heading4'] ?></h3>
             <p><?php echo $blog['content4'] ?></p>
         </div>
+        <div class="mb-5">
+          <h2 class="container text-dark">You Can Also Read </h2>
+          <div class="suggest-blogs container">
+            <?php 
+              $category = $blog['category'];
+              $select_query = "select blog_id, blog_title, category from blogs where category='$category' and
+              blog_id!=$id";
+
+              $result = $conn->query($select_query);
+              if ($result->num_rows>0){
+                while ($suggest_blog = $result->fetch_assoc()){
+            ?>
+                <div class="mt-3 border rounded p-4">
+                  <div>
+                    <a href="blog_view.php?blog_id=<?php echo $suggest_blog['blog_id'] ?>"><h3><?php echo $suggest_blog['blog_title'] ?></h3></a>
+                  </div>
+                  <hr>
+                  <span class="bg-info text-dark rounded p-2"><?php echo $suggest_blog['category'] ?></span>
+                </div>
+            <?php
+                }
+              }
+            ?>
+          </div>
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
