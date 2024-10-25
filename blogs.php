@@ -15,6 +15,9 @@
     <main class="main-div">
       <div class="blog-list">
         <?php
+            //define total number of results you want per page  
+            $results_per_page = 5;  
+
             if (isset($_POST['search_btn'])){
               $search = $_POST['user_search'];
               $select_blogs = "select b.blog_id,b.blog_title, b.category, b.introduction,
@@ -45,6 +48,24 @@
             }
 
   
+            $result = $conn->query($select_blogs);
+
+            $number_of_result = $result->num_rows;
+
+            //determine the total number of pages available  
+            $number_of_page = ceil ($number_of_result / $results_per_page);  
+
+            //determine which page number visitor is currently on  
+            if (!isset ($_GET['page']) ) {  
+                $page = 1;  
+            } else {  
+                $page = $_GET['page'];  
+            }  
+            
+            $page_current_result = ($page-1) * $results_per_page; 
+            
+            $select_blogs = $select_blogs . " limit $page_current_result , $results_per_page";
+
             $result = $conn->query($select_blogs);
 
             if ($result->num_rows>0){
@@ -96,9 +117,19 @@
         <?php
               }
             }
-
         ?>
 
+    <div aria-label="Page navigation example">
+      <ul class="pagination pagination-lg">
+      <?php  
+        //display the link of the pages in URL  
+        for($page = 1; $page<= $number_of_page; $page++) {  
+            echo "<li class='page-item'><a class='page-link' href='blogs.php?page=$page'>$page</a></li>";  
+        }  
+      ?>
+
+      </ul>
+    </div>
       </div>
       <div class="filter-list">
           <h1>Filters</h1>
@@ -151,7 +182,9 @@
             </form>
             
           </div>
+
       </div>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
